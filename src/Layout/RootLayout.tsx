@@ -93,7 +93,7 @@ const RootLayout = () => {
                                                             <DropdownMenuSubContent>
                                                                 <DropdownMenuItem>
                                                                     <NavLink to='/guides/new-player-guides/gearing/basic'>
-                                                                       Hiram Basics
+                                                                        Hiram Basics
                                                                     </NavLink>
                                                                 </DropdownMenuItem>
                                                                 <DropdownMenuItem>
