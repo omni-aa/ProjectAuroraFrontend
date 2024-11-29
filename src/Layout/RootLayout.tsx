@@ -81,62 +81,25 @@ const RootLayout = () => {
                                         <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                             <DropdownMenuItem asChild>
                                                 <NavLink
-                                                    to="/guides/new-player-guides/leveling/basic"
+                                                    to="/guides/new-player-guides/basic-player-knowledge"
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                                     onClick={closeMenu} // Close menu on link click
                                                 >
-                                                    Leveling Guide
+                                                    New Player Introduction
                                                 </NavLink>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem asChild>
                                                 <NavLink
-                                                    to="/guides/new-player-guides/leveling/intermediate"
+                                                    to="/guides/new-player-guides/quests-events"
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                                     onClick={closeMenu} // Close menu on link click
                                                 >
-                                                    Basic Player Knowledge
+                                                    Quests / Events
 
-                                                </NavLink>
-                                            </DropdownMenuItem>
-                                            <DropdownMenuItem asChild>
-                                                <NavLink
-                                                    to="/guides/new-player-guides/leveling/advanced"
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                                    onClick={closeMenu} // Close menu on link click
-                                                >
-                                                    Gear Basics
                                                 </NavLink>
                                             </DropdownMenuItem>
                                         </DropdownMenuSubContent>
                                     </DropdownMenuSub>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/gearing/basic"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Hiram Gear Guide
-
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/world-events"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Erenor Gear Guide
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/world-events"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Achievement Collections
-                                        </NavLink>
-                                    </DropdownMenuItem>
                                     <DropdownMenuSub>
                                         <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
                                             Custom Quests
@@ -144,7 +107,7 @@ const RootLayout = () => {
                                         <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                             <DropdownMenuItem asChild>
                                                 <NavLink
-                                                    to="/guides/new-player-guides/leveling/basic"
+                                                    to="/guides/new-player-guides/leveling"
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                                     onClick={closeMenu} // Close menu on link click
                                                 >
@@ -172,6 +135,52 @@ const RootLayout = () => {
                                             </DropdownMenuItem>
                                         </DropdownMenuSubContent>
                                     </DropdownMenuSub>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/hiram-gear-guide"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Hiram Gear Guide
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/erenor-crafting-guide"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Erenor Gear Guide
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/costume-undergarments"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Costume & Undergarments Guide
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/world-events"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Achievement Collections
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/client-error-faq"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            <span className="text-red-300 dark:border-gray-800">ArcheRage Client Error FAQ
+                                            </span>
+                                        </NavLink>
+                                    </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </nav>
@@ -221,7 +230,7 @@ const RootLayout = () => {
                                 <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                     <DropdownMenuItem asChild>
                                         <NavLink
-                                            to="/guides/new-player-guides/leveling/basic"
+                                            to="/guides/new-player-guides/leveling"
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                             onClick={closeMenu} // Close menu on link click
                                         >

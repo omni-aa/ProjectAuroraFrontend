@@ -1,6 +1,6 @@
 import {FlipWords} from "@/components/ui/flip_words.tsx";
 
-export const  NewPlayerFAQ = () => {
+export const  HiramGearGuide= () => {
     const words = ["Guides", "Tutorials", "Calculations", "Translations"];
 
     return (
