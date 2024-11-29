@@ -1,4 +1,4 @@
-import {FlipWords} from "@/Components/ui/flip_words.tsx";
+import {FlipWords} from "@/components/ui/flip_words.tsx";
 
 export const  NewPlayerFAQ = () => {
     const words = ["Guides", "Tutorials", "Calculations", "Translations"];
