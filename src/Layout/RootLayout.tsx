@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Menu, X, Home, Clock, BookOpen, Database, ChevronDown } from "lucide-react";
+import { Menu, X, Home, Clock, BookOpen, Database, ChevronDown} from "lucide-react";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import {
     DropdownMenu,
@@ -69,13 +69,14 @@ const RootLayout = () => {
                             {/* Dropdown Menu */}
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
+                                    <BookOpen size={20} />
                                     Guides
                                     <ChevronDown size={18} />
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                     <DropdownMenuSub>
                                         <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
-                                            Leveling Guide
+                                            New Player Guides
                                         </DropdownMenuSubTrigger>
                                         <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                             <DropdownMenuItem asChild>
@@ -84,7 +85,7 @@ const RootLayout = () => {
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                                     onClick={closeMenu} // Close menu on link click
                                                 >
-                                                    Basic Leveling
+                                                    Leveling Guide
                                                 </NavLink>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem asChild>
@@ -93,7 +94,8 @@ const RootLayout = () => {
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                                     onClick={closeMenu} // Close menu on link click
                                                 >
-                                                    Intermediate Leveling
+                                                    Basic Player Knowledge
+
                                                 </NavLink>
                                             </DropdownMenuItem>
                                             <DropdownMenuItem asChild>
@@ -102,7 +104,7 @@ const RootLayout = () => {
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                                     onClick={closeMenu} // Close menu on link click
                                                 >
-                                                    Advanced Leveling
+                                                    Gear Basics
                                                 </NavLink>
                                             </DropdownMenuItem>
                                         </DropdownMenuSubContent>
@@ -113,7 +115,8 @@ const RootLayout = () => {
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                             onClick={closeMenu} // Close menu on link click
                                         >
-                                            Hiram Basics
+                                            Hiram Gear Guide
+
                                         </NavLink>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem asChild>
@@ -122,9 +125,53 @@ const RootLayout = () => {
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                             onClick={closeMenu} // Close menu on link click
                                         >
-                                            World Events
+                                            Erenor Gear Guide
                                         </NavLink>
                                     </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/world-events"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Achievement Collections
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSub>
+                                        <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
+                                            Custom Quests
+                                        </DropdownMenuSubTrigger>
+                                        <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
+                                            <DropdownMenuItem asChild>
+                                                <NavLink
+                                                    to="/guides/new-player-guides/leveling/basic"
+                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    onClick={closeMenu} // Close menu on link click
+                                                >
+                                                    Custom Racial Quests
+                                                </NavLink>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem asChild>
+                                                <NavLink
+                                                    to="/guides/new-player-guides/leveling/intermediate"
+                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    onClick={closeMenu} // Close menu on link click
+                                                >
+                                                    Dream Ring / Hiram Ring
+
+                                                </NavLink>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem asChild>
+                                                <NavLink
+                                                    to="/guides/new-player-guides/leveling/advanced"
+                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    onClick={closeMenu} // Close menu on link click
+                                                >
+                                                    Misc
+                                                </NavLink>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuSubContent>
+                                    </DropdownMenuSub>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </nav>
@@ -158,10 +205,14 @@ const RootLayout = () => {
                     </NavLink>
                     {/* Mobile Dropdown */}
                     <DropdownMenu>
-                        <DropdownMenuTrigger className="w-full flex justify-between items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600">
-                            Guides
+                        <DropdownMenuTrigger className="w-full flex items-center px-4 py-2 rounded-lg">
+                            <div className="flex items-center gap-2 w-full">
+                                <BookOpen size={20} />
+                                <span className="flex-1 text-left">Guides</span> {/* Ensures Guides is aligned to the left */}
+                            </div>
                             <ChevronDown size={18} />
                         </DropdownMenuTrigger>
+
                         <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                             <DropdownMenuSub>
                                 <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
