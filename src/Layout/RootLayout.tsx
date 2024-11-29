@@ -17,6 +17,9 @@ const RootLayout = () => {
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    // Close the menu when a link is clicked in mobile view
+    const closeMenu = () => setIsMenuOpen(false);
+
     const navLinkClass = ({ isActive }: { isActive: boolean }) =>
         `flex items-center gap-2 px-4 py-2 rounded-lg text-base font-medium ${
             isActive
@@ -36,7 +39,7 @@ const RootLayout = () => {
                         </NavLink>
 
                         {/* Mobile Menu Toggle */}
-                        <div className="md:hidden">
+                        <div className="md:hidden absolute top-4 right-4">
                             <button
                                 onClick={toggleMenu}
                                 className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
@@ -73,13 +76,13 @@ const RootLayout = () => {
                                     <DropdownMenuSub>
                                         <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
                                             Leveling Guide
-
                                         </DropdownMenuSubTrigger>
                                         <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                             <DropdownMenuItem asChild>
                                                 <NavLink
                                                     to="/guides/new-player-guides/leveling/basic"
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    onClick={closeMenu} // Close menu on link click
                                                 >
                                                     Basic Leveling
                                                 </NavLink>
@@ -88,6 +91,7 @@ const RootLayout = () => {
                                                 <NavLink
                                                     to="/guides/new-player-guides/leveling/intermediate"
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    onClick={closeMenu} // Close menu on link click
                                                 >
                                                     Intermediate Leveling
                                                 </NavLink>
@@ -96,6 +100,7 @@ const RootLayout = () => {
                                                 <NavLink
                                                     to="/guides/new-player-guides/leveling/advanced"
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                                    onClick={closeMenu} // Close menu on link click
                                                 >
                                                     Advanced Leveling
                                                 </NavLink>
@@ -106,6 +111,7 @@ const RootLayout = () => {
                                         <NavLink
                                             to="/guides/new-player-guides/gearing/basic"
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
                                         >
                                             Hiram Basics
                                         </NavLink>
@@ -114,6 +120,7 @@ const RootLayout = () => {
                                         <NavLink
                                             to="/guides/new-player-guides/world-events"
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
                                         >
                                             World Events
                                         </NavLink>
@@ -129,6 +136,89 @@ const RootLayout = () => {
             <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <Outlet />
             </main>
+
+            {/* Mobile Dropdown Menu */}
+            {isMenuOpen && (
+                <nav className="md:hidden absolute top-0 right-0 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-4 mt-16">
+                    <NavLink to="/" className={navLinkClass} onClick={closeMenu}>
+                        <Home size={20} />
+                        Home
+                    </NavLink>
+                    <NavLink to="/event-timers" className={navLinkClass} onClick={closeMenu}>
+                        <Clock size={20} />
+                        Event Timers
+                    </NavLink>
+                    <NavLink to="/class-guides" className={navLinkClass} onClick={closeMenu}>
+                        <BookOpen size={20} />
+                        Class Guides
+                    </NavLink>
+                    <NavLink to="/archerage-database" className={navLinkClass} onClick={closeMenu}>
+                        <Database size={20} />
+                        ArcheRage Database
+                    </NavLink>
+                    {/* Mobile Dropdown */}
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className="w-full flex justify-between items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600">
+                            Guides
+                            <ChevronDown size={18} />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
+                            <DropdownMenuSub>
+                                <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
+                                    Leveling Guide
+                                </DropdownMenuSubTrigger>
+                                <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/leveling/basic"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Basic Leveling
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/leveling/intermediate"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Intermediate Leveling
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/leveling/advanced"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Advanced Leveling
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                </DropdownMenuSubContent>
+                            </DropdownMenuSub>
+                            <DropdownMenuItem asChild>
+                                <NavLink
+                                    to="/guides/new-player-guides/gearing/basic"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    onClick={closeMenu} // Close menu on link click
+                                >
+                                    Hiram Basics
+                                </NavLink>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <NavLink
+                                    to="/guides/new-player-guides/world-events"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    onClick={closeMenu} // Close menu on link click
+                                >
+                                    World Events
+                                </NavLink>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </nav>
+            )}
 
             {/* Mode Toggle */}
             <div className="fixed bottom-4 right-4">
