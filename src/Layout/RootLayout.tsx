@@ -196,36 +196,59 @@ const RootLayout = () => {
             {/* Mobile Dropdown Menu */}
             {isMenuOpen && (
                 <nav className="md:hidden absolute top-0 right-0 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-4 mt-16">
-                    <NavLink to="/" className={navLinkClass} onClick={closeMenu}>
+                    <NavLink to="/" className={navLinkClass}>
                         <Home size={20} />
                         Home
                     </NavLink>
-                    <NavLink to="/event-timers" className={navLinkClass} onClick={closeMenu}>
+                    <NavLink to="/event-timers" className={navLinkClass}>
                         <Clock size={20} />
                         Event Timers
                     </NavLink>
-                    <NavLink to="/class-guides" className={navLinkClass} onClick={closeMenu}>
+                    <NavLink to="/class-guides" className={navLinkClass}>
                         <BookOpen size={20} />
                         Class Guides
                     </NavLink>
-                    <NavLink to="/archerage-database" className={navLinkClass} onClick={closeMenu}>
+                    <NavLink to="/archerage-database" className={navLinkClass}>
                         <Database size={20} />
                         ArcheRage Database
                     </NavLink>
-                    {/* Mobile Dropdown */}
+                    {/* Dropdown Menu */}
                     <DropdownMenu>
-                        <DropdownMenuTrigger className="w-full flex items-center px-4 py-2 rounded-lg">
-                            <div className="flex items-center gap-2 w-full">
-                                <BookOpen size={20} />
-                                <span className="flex-1 text-left">Guides</span> {/* Ensures Guides is aligned to the left */}
-                            </div>
+                        <DropdownMenuTrigger className="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
+                            <BookOpen size={20} />
+                            Guides
                             <ChevronDown size={18} />
                         </DropdownMenuTrigger>
-
                         <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                             <DropdownMenuSub>
                                 <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
-                                    Leveling Guide
+                                    New Player Guides
+                                </DropdownMenuSubTrigger>
+                                <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/basic-player-knowledge"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            New Player Introduction
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <NavLink
+                                            to="/guides/new-player-guides/quests-events"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                            onClick={closeMenu} // Close menu on link click
+                                        >
+                                            Quests / Events
+
+                                        </NavLink>
+                                    </DropdownMenuItem>
+                                </DropdownMenuSubContent>
+                            </DropdownMenuSub>
+                            <DropdownMenuSub>
+                                <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
+                                    Custom Quests
                                 </DropdownMenuSubTrigger>
                                 <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
                                     <DropdownMenuItem asChild>
@@ -234,7 +257,7 @@ const RootLayout = () => {
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                             onClick={closeMenu} // Close menu on link click
                                         >
-                                            Basic Leveling
+                                            Custom Racial Quests
                                         </NavLink>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem asChild>
@@ -243,7 +266,8 @@ const RootLayout = () => {
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                             onClick={closeMenu} // Close menu on link click
                                         >
-                                            Intermediate Leveling
+                                            Dream Ring / Hiram Ring
+
                                         </NavLink>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem asChild>
@@ -252,18 +276,36 @@ const RootLayout = () => {
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                             onClick={closeMenu} // Close menu on link click
                                         >
-                                            Advanced Leveling
+                                            Misc
                                         </NavLink>
                                     </DropdownMenuItem>
                                 </DropdownMenuSubContent>
                             </DropdownMenuSub>
                             <DropdownMenuItem asChild>
                                 <NavLink
-                                    to="/guides/new-player-guides/gearing/basic"
+                                    to="/guides/hiram-gear-guide"
                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                     onClick={closeMenu} // Close menu on link click
                                 >
-                                    Hiram Basics
+                                    Hiram Gear Guide
+                                </NavLink>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <NavLink
+                                    to="/guides/erenor-crafting-guide"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    onClick={closeMenu} // Close menu on link click
+                                >
+                                    Erenor Gear Guide
+                                </NavLink>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <NavLink
+                                    to="/guides/costume-undergarments"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    onClick={closeMenu} // Close menu on link click
+                                >
+                                    Costume & Undergarments Guide
                                 </NavLink>
                             </DropdownMenuItem>
                             <DropdownMenuItem asChild>
@@ -272,7 +314,17 @@ const RootLayout = () => {
                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                                     onClick={closeMenu} // Close menu on link click
                                 >
-                                    World Events
+                                    Achievement Collections
+                                </NavLink>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <NavLink
+                                    to="/guides/client-error-faq"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                                    onClick={closeMenu} // Close menu on link click
+                                >
+                                            <span className="text-red-300 dark:border-gray-800">ArcheRage Client Error FAQ
+                                            </span>
                                 </NavLink>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
