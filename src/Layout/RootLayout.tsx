@@ -1,341 +1,243 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { Menu, X, Home, Clock, BookOpen, Database, ChevronDown} from "lucide-react";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-    DropdownMenuSub,
-    DropdownMenuSubTrigger,
-    DropdownMenuSubContent,
-} from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useState } from 'react';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import * as RadixMenu from '@radix-ui/react-dropdown-menu';
+import { cn } from '@/lib/utils';
+import { ModeToggle } from '@/components/ui/mode-toggle'; // Dark Mode toggle component
 
 const RootLayout = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isGuidesOpen, setIsGuidesOpen] = useState(false);
+    const [isMoreInfoOpen, setIsMoreInfoOpen] = useState(false);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-    // Close the menu when a link is clicked in mobile view
-    const closeMenu = () => setIsMenuOpen(false);
-
-    const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-        `flex items-center gap-2 px-4 py-2 rounded-lg text-base font-medium ${
-            isActive
-                ? "bg-blue-500 text-white shadow-md"
-                : "text-gray-800 hover:bg-gray-100 hover:text-blue-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
-        }`;
+    // Function to close the mobile menu when a NavLink is clicked
+    const closeMenu = () => setIsOpen(false);
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
             {/* Header */}
-            <header className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
-                        {/* Logo */}
-                        <NavLink to="/" className="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                            AuroraProject
+            <header className="sticky top-0 z-50 bg-gray-50 dark:bg-gray-900 shadow-md">
+                <div className="container mx-auto px-4 flex items-center justify-between py-4">
+                    {/* Brand/Logo */}
+                    <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-gray-200 no-underline">
+                        AuroraProject
+                    </Link>
+
+                    {/* Desktop Navigation (hidden on mobile) */}
+                    <nav className="hidden md:flex items-center space-x-6 ml-auto">
+                        <NavLink
+                            to="/home"
+                            className={({ isActive }) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink
+                            to="/event-timers"
+                            className={({ isActive }) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                        >
+                            Event Timers
+                        </NavLink>
+                        <NavLink
+                            to="/class-guides"
+                            className={({ isActive }) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                        >
+                            Class Guides
+                        </NavLink>
+                        <NavLink
+                            to="/archerage-database"
+                            className={({ isActive }) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                        >
+                            ArcheRage Database
                         </NavLink>
 
-                        {/* Mobile Menu Toggle */}
-                        <div className="md:hidden absolute top-4 right-4">
-                            <button
-                                onClick={toggleMenu}
-                                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
-                            >
-                                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                            </button>
-                        </div>
-
-                        {/* Desktop Navigation */}
-                        <nav className="hidden md:flex space-x-6">
-                            <NavLink to="/" className={navLinkClass}>
-                                <Home size={20} />
-                                Home
-                            </NavLink>
-                            <NavLink to="/event-timers" className={navLinkClass}>
-                                <Clock size={20} />
-                                Event Timers
-                            </NavLink>
-                            <NavLink to="/class-guides" className={navLinkClass}>
-                                <BookOpen size={20} />
-                                Class Guides
-                            </NavLink>
-                            <NavLink to="/archerage-database" className={navLinkClass}>
-                                <Database size={20} />
-                                ArcheRage Database
-                            </NavLink>
-                            {/* Dropdown Menu */}
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
-                                    <BookOpen size={20} />
-                                    Guides
-                                    <ChevronDown size={18} />
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
-                                    <DropdownMenuSub>
-                                        <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
+                        {/* Guides Dropdown */}
+                        <RadixMenu.Root>
+                            <RadixMenu.Trigger className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
+                                Guides
+                            </RadixMenu.Trigger>
+                            <RadixMenu.Portal>
+                                <RadixMenu.Content className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto" sideOffset={8}>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/guides/new-player-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                             New Player Guides
-                                        </DropdownMenuSubTrigger>
-                                        <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
-                                            <DropdownMenuItem asChild>
-                                                <NavLink
-                                                    to="/guides/new-player-guides/basic-player-knowledge"
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                                    onClick={closeMenu} // Close menu on link click
-                                                >
-                                                    New Player Introduction
-                                                </NavLink>
-                                            </DropdownMenuItem>
-                                            <DropdownMenuItem asChild>
-                                                <NavLink
-                                                    to="/guides/new-player-guides/quests-events"
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                                    onClick={closeMenu} // Close menu on link click
-                                                >
-                                                    Quests / Events
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/guides/advanced-player-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Advanced Player Guides
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/guides/gear-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Gear Guides
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/guides/quest-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Quest Guides
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/guides/skill-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Skill Guides
+                                        </Link>
+                                    </RadixMenu.Item>
+                                </RadixMenu.Content>
+                            </RadixMenu.Portal>
+                        </RadixMenu.Root>
 
-                                                </NavLink>
-                                            </DropdownMenuItem>
-                                        </DropdownMenuSubContent>
-                                    </DropdownMenuSub>
-                                    <DropdownMenuSub>
-                                        <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
-                                            Custom Quests
-                                        </DropdownMenuSubTrigger>
-                                        <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
-                                            <DropdownMenuItem asChild>
-                                                <NavLink
-                                                    to="/guides/new-player-guides/leveling"
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                                    onClick={closeMenu} // Close menu on link click
-                                                >
-                                                    Custom Racial Quests
-                                                </NavLink>
-                                            </DropdownMenuItem>
-                                            <DropdownMenuItem asChild>
-                                                <NavLink
-                                                    to="/guides/new-player-guides/leveling/intermediate"
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                                    onClick={closeMenu} // Close menu on link click
-                                                >
-                                                    Dream Ring / Hiram Ring
+                        {/* More Info Dropdown */}
+                        <RadixMenu.Root>
+                            <RadixMenu.Trigger className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
+                                More Info
+                            </RadixMenu.Trigger>
+                            <RadixMenu.Portal>
+                                <RadixMenu.Content className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto" side="bottom" sideOffset={8}>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/info/about" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            About Us
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/info/contact" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Contact Us
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/info/faq" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            FAQ
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/info/terms" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Terms of Service
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/info/privacy" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Privacy Policy
+                                        </Link>
+                                    </RadixMenu.Item>
+                                </RadixMenu.Content>
+                            </RadixMenu.Portal>
+                        </RadixMenu.Root>
+                    </nav>
 
-                                                </NavLink>
-                                            </DropdownMenuItem>
-                                            <DropdownMenuItem asChild>
-                                                <NavLink
-                                                    to="/guides/new-player-guides/leveling/advanced"
-                                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                                    onClick={closeMenu} // Close menu on link click
-                                                >
-                                                    Misc
-                                                </NavLink>
-                                            </DropdownMenuItem>
-                                        </DropdownMenuSubContent>
-                                    </DropdownMenuSub>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/hiram-gear-guide"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Hiram Gear Guide
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/erenor-crafting-guide"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Erenor Gear Guide
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/costume-undergarments"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Costume & Undergarments Guide
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/world-events"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Achievement Collections
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/client-error-faq"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            <span className="text-red-300 dark:border-gray-800">ArcheRage Client Error FAQ
-                                            </span>
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </nav>
-                    </div>
+                    {/* Mobile Navigation Toggle */}
+                    <button className="block md:hidden p-2 rounded-md text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setIsOpen(!isOpen)}>
+                        <svg className={cn('h-6 w-6 transition-transform', isOpen ? 'rotate-90' : '')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fillRule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zm0 6a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75zm0 6a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clipRule="evenodd" />
+                        </svg>
+                    </button>
+
+                    {/* Dark Mode Toggle */}
+                    <ModeToggle />
                 </div>
             </header>
 
-            {/* Main Content */}
-            <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <Outlet />
-            </main>
+            {/* Mobile Navigation */}
+            {isOpen && (
+                <div className="md:hidden bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 px-4 py-6">
+                    <ul className="space-y-4">
+                        <li>
+                            <NavLink
+                                to="/home"
+                                onClick={closeMenu} // Close the menu on click
+                                className="text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/event-timers"
+                                onClick={closeMenu} // Close the menu on click
+                                className="text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                Event Timers
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/class-guides"
+                                onClick={closeMenu} // Close the menu on click
+                                className="text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                Class Guides
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/archerage-database"
+                                onClick={closeMenu} // Close the menu on click
+                                className="text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                ArcheRage Database
+                            </NavLink>
+                        </li>
 
-            {/* Mobile Dropdown Menu */}
-            {isMenuOpen && (
-                <nav className="md:hidden absolute top-0 right-0 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-4 mt-16">
-                    <NavLink to="/" className={navLinkClass}>
-                        <Home size={20} />
-                        Home
-                    </NavLink>
-                    <NavLink to="/event-timers" className={navLinkClass}>
-                        <Clock size={20} />
-                        Event Timers
-                    </NavLink>
-                    <NavLink to="/class-guides" className={navLinkClass}>
-                        <BookOpen size={20} />
-                        Class Guides
-                    </NavLink>
-                    <NavLink to="/archerage-database" className={navLinkClass}>
-                        <Database size={20} />
-                        ArcheRage Database
-                    </NavLink>
-                    {/* Dropdown Menu */}
-                    <DropdownMenu>
-                        <DropdownMenuTrigger className="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
-                            <BookOpen size={20} />
-                            Guides
-                            <ChevronDown size={18} />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
-                            <DropdownMenuSub>
-                                <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
-                                    New Player Guides
-                                </DropdownMenuSubTrigger>
-                                <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/basic-player-knowledge"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            New Player Introduction
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/quests-events"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Quests / Events
+                        {/* Guides Dropdown for Mobile */}
+                        <li>
+                            <button
+                                onClick={() => setIsGuidesOpen(!isGuidesOpen)}
+                                className="w-full text-left text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                Guides
+                            </button>
+                            {isGuidesOpen && (
+                                <div className="ml-6 mt-2 space-y-2">
+                                    <NavLink
+                                        to="/guides/new-player-guides"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        New Player Guides
+                                    </NavLink>
+                                    <NavLink
+                                        to="/guides/advanced-player-guides"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Advanced Player Guides
+                                    </NavLink>
+                                </div>
+                            )}
+                        </li>
 
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                </DropdownMenuSubContent>
-                            </DropdownMenuSub>
-                            <DropdownMenuSub>
-                                <DropdownMenuSubTrigger className="flex justify-between items-center px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">
-                                    Custom Quests
-                                </DropdownMenuSubTrigger>
-                                <DropdownMenuSubContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2">
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/leveling"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Custom Racial Quests
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/leveling/intermediate"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Dream Ring / Hiram Ring
-
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem asChild>
-                                        <NavLink
-                                            to="/guides/new-player-guides/leveling/advanced"
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                            onClick={closeMenu} // Close menu on link click
-                                        >
-                                            Misc
-                                        </NavLink>
-                                    </DropdownMenuItem>
-                                </DropdownMenuSubContent>
-                            </DropdownMenuSub>
-                            <DropdownMenuItem asChild>
-                                <NavLink
-                                    to="/guides/hiram-gear-guide"
-                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                    onClick={closeMenu} // Close menu on link click
-                                >
-                                    Hiram Gear Guide
-                                </NavLink>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <NavLink
-                                    to="/guides/erenor-crafting-guide"
-                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                    onClick={closeMenu} // Close menu on link click
-                                >
-                                    Erenor Gear Guide
-                                </NavLink>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <NavLink
-                                    to="/guides/costume-undergarments"
-                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                    onClick={closeMenu} // Close menu on link click
-                                >
-                                    Costume & Undergarments Guide
-                                </NavLink>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <NavLink
-                                    to="/guides/new-player-guides/world-events"
-                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                    onClick={closeMenu} // Close menu on link click
-                                >
-                                    Achievement Collections
-                                </NavLink>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                                <NavLink
-                                    to="/guides/client-error-faq"
-                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                                    onClick={closeMenu} // Close menu on link click
-                                >
-                                            <span className="text-red-300 dark:border-gray-800">ArcheRage Client Error FAQ
-                                            </span>
-                                </NavLink>
-                            </DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                </nav>
+                        {/* More Info Dropdown for Mobile */}
+                        <li>
+                            <button
+                                onClick={() => setIsMoreInfoOpen(!isMoreInfoOpen)}
+                                className="w-full text-left text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                More Info
+                            </button>
+                            {isMoreInfoOpen && (
+                                <div className="ml-6 mt-2 space-y-2">
+                                    <NavLink
+                                        to="/info/about"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        About Us
+                                    </NavLink>
+                                    <NavLink
+                                        to="/info/contact"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Contact Us
+                                    </NavLink>
+                                </div>
+                            )}
+                        </li>
+                    </ul>
+                </div>
             )}
 
-            {/* Mode Toggle */}
-            <div className="fixed bottom-4 right-4">
-                <ModeToggle />
-            </div>
+            {/* Main Content */}
+            <main className="flex-grow container mx-auto px-4 py-4">
+                <Outlet />
+            </main>
         </div>
     );
 };
