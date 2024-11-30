@@ -8,7 +8,6 @@ const RootLayout = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isGuidesOpen, setIsGuidesOpen] = useState(false);
     const [isMoreInfoOpen, setIsMoreInfoOpen] = useState(false);
-    const [isAchievementOpen, setIsAchievementOpen] = useState(false);
 
     // Function to close the mobile menu when a NavLink is clicked
     const closeMenu = () => setIsOpen(false);
@@ -26,7 +25,7 @@ const RootLayout = () => {
                     {/* Desktop Navigation (hidden on mobile) */}
                     <nav className="hidden md:flex items-center space-x-6 ml-auto">
                         <NavLink
-                            to="/home"
+                            to="/"
                             className={({ isActive }) =>
                                 cn(
                                     'text-foreground dark:text-foreground-dark hover:bg-primary dark:hover:bg-primary-dark px-6 py-3 rounded-lg transition-all',
@@ -64,28 +63,33 @@ const RootLayout = () => {
                             <RadixMenu.Portal>
                                 <RadixMenu.Content className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto" sideOffset={8}>
                                     <RadixMenu.Item asChild>
-                                        <Link to="/guides/new-player-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                            New Player Guides
+                                        <Link to="/guides/new-player-guide" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            New Player Guide
                                         </Link>
                                     </RadixMenu.Item>
                                     <RadixMenu.Item asChild>
-                                        <Link to="/guides/advanced-player-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                            Advanced Player Guides
+                                        <Link to="/guides/quests-events" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Quest & Event Guides
                                         </Link>
                                     </RadixMenu.Item>
                                     <RadixMenu.Item asChild>
-                                        <Link to="/guides/gear-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                            Gear Guides
+                                        <Link to="/guides/hiram-gear-guide" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Hiram Gear Guide
                                         </Link>
                                     </RadixMenu.Item>
                                     <RadixMenu.Item asChild>
-                                        <Link to="/guides/quest-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                            Quest Guides
+                                        <Link to="/guides/erenor-crafting-guide" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Erenor Crafting Guide
                                         </Link>
                                     </RadixMenu.Item>
                                     <RadixMenu.Item asChild>
-                                        <Link to="/guides/skill-guides" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                            Skill Guides
+                                        <Link to="/guides/costume-undergarments" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Costume & Undergarments Guide
+                                        </Link>
+                                    </RadixMenu.Item>
+                                    <RadixMenu.Item asChild>
+                                        <Link to="/guides/achievement-collection" className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                            Achievement Collection Guides
                                         </Link>
                                     </RadixMenu.Item>
                                 </RadixMenu.Content>
@@ -227,9 +231,18 @@ const RootLayout = () => {
                                     >
                                         Costume & Undergarments Guide
                                     </NavLink>
+                                    <NavLink
+                                        to="/guides/achievements-collection"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Achievement Collection Guides
+                                    </NavLink>
                                 </div>
                             )}
                         </li>
+
+
 
                         {/* More Info Dropdown for Mobile */}
                         <li>
@@ -254,32 +267,6 @@ const RootLayout = () => {
                                         className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
                                     >
                                         Contact Us
-                                    </NavLink>
-                                </div>
-                            )}
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => setIsAchievementOpen(!isAchievementOpen)}
-                                className="w-full text-left text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
-                            >
-                                Achivement Collection GUide
-                            </button>
-                            {!isAchievementOpen && (
-                                <div className="ml-6 mt-2 space-y-2">
-                                    <NavLink
-                                        to="/info/about"
-                                        onClick={closeMenu} // Close the menu on click
-                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
-                                    >
-                                        Sky Emperor
-                                    </NavLink>
-                                    <NavLink
-                                        to="/info/contact"
-                                        onClick={closeMenu} // Close the menu on click
-                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
-                                    >
-                                       Sky Warden
                                     </NavLink>
                                 </div>
                             )}
