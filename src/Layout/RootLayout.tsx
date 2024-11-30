@@ -18,7 +18,7 @@ const RootLayout = () => {
             <header className="sticky top-0 z-50 bg-gray-50 dark:bg-gray-900 shadow-md">
                 <div className="container mx-auto px-4 flex items-center justify-between py-4">
                     {/* Brand/Logo */}
-                    <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-gray-200 no-underline">
+                    <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-primary no-underline text-primary">
                         AuroraProject
                     </Link>
 
@@ -26,10 +26,16 @@ const RootLayout = () => {
                     <nav className="hidden md:flex items-center space-x-6 ml-auto">
                         <NavLink
                             to="/home"
-                            className={({ isActive }) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                            className={({ isActive }) =>
+                                cn(
+                                    'text-foreground dark:text-foreground-dark hover:bg-primary dark:hover:bg-primary-dark px-6 py-3 rounded-lg transition-all',
+                                    isActive ? 'font-medium  dark:text-primary-dark' : 'font-normal'
+                                )
+                            }
                         >
                             Home
                         </NavLink>
+
                         <NavLink
                             to="/event-timers"
                             className={({ isActive }) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
