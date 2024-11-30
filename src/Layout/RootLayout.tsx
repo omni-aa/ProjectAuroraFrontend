@@ -8,6 +8,7 @@ const RootLayout = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isGuidesOpen, setIsGuidesOpen] = useState(false);
     const [isMoreInfoOpen, setIsMoreInfoOpen] = useState(false);
+    const [isAchievementOpen, setIsAchievementOpen] = useState(false);
 
     // Function to close the mobile menu when a NavLink is clicked
     const closeMenu = () => setIsOpen(false);
@@ -94,7 +95,7 @@ const RootLayout = () => {
                         {/* More Info Dropdown */}
                         <RadixMenu.Root>
                             <RadixMenu.Trigger className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
-                                More Info
+                                Project Information
                             </RadixMenu.Trigger>
                             <RadixMenu.Portal>
                                 <RadixMenu.Content className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto" side="bottom" sideOffset={8}>
@@ -146,7 +147,7 @@ const RootLayout = () => {
                     <ul className="space-y-4">
                         <li>
                             <NavLink
-                                to="/home"
+                                to="/"
                                 onClick={closeMenu} // Close the menu on click
                                 className="text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
                             >
@@ -192,18 +193,39 @@ const RootLayout = () => {
                             {isGuidesOpen && (
                                 <div className="ml-6 mt-2 space-y-2">
                                     <NavLink
-                                        to="/guides/new-player-guides"
+                                        to="/guides/new-player-guide"
                                         onClick={closeMenu} // Close the menu on click
                                         className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
                                     >
-                                        New Player Guides
+                                        New Player Guide
                                     </NavLink>
                                     <NavLink
-                                        to="/guides/advanced-player-guides"
+                                        to="/guides/quests-events"
                                         onClick={closeMenu} // Close the menu on click
                                         className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
                                     >
-                                        Advanced Player Guides
+                                        Quest & Event Guides
+                                    </NavLink>
+                                    <NavLink
+                                        to="/guides/hiram-gear-guide"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Hiram Gear Guide
+                                    </NavLink>
+                                    <NavLink
+                                        to="/guides/erenor-crafting-guide"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Erenor Crafting Guide
+                                    </NavLink>
+                                    <NavLink
+                                        to="/guides/costume-undergarments"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Costume & Undergarments Guide
                                     </NavLink>
                                 </div>
                             )}
@@ -215,7 +237,7 @@ const RootLayout = () => {
                                 onClick={() => setIsMoreInfoOpen(!isMoreInfoOpen)}
                                 className="w-full text-left text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
                             >
-                                More Info
+                                Project Information
                             </button>
                             {isMoreInfoOpen && (
                                 <div className="ml-6 mt-2 space-y-2">
@@ -236,13 +258,39 @@ const RootLayout = () => {
                                 </div>
                             )}
                         </li>
+                        <li>
+                            <button
+                                onClick={() => setIsAchievementOpen(!isAchievementOpen)}
+                                className="w-full text-left text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 block px-6 py-3 rounded-lg transition-all"
+                            >
+                                Achivement Collection GUide
+                            </button>
+                            {!isAchievementOpen && (
+                                <div className="ml-6 mt-2 space-y-2">
+                                    <NavLink
+                                        to="/info/about"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                        Sky Emperor
+                                    </NavLink>
+                                    <NavLink
+                                        to="/info/contact"
+                                        onClick={closeMenu} // Close the menu on click
+                                        className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                    >
+                                       Sky Warden
+                                    </NavLink>
+                                </div>
+                            )}
+                        </li>
                     </ul>
                 </div>
             )}
 
             {/* Main Content */}
             <main className="flex-grow container mx-auto px-4 py-4">
-                <Outlet />
+                <Outlet/>
             </main>
         </div>
     );

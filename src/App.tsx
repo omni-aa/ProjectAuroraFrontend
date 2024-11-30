@@ -25,8 +25,8 @@ const router = createBrowserRouter(
         <Route path="/"element={<RootLayout/>}>
             <Route path='/' element={<HomePage />} />
             <Route path="guides" element={<Guides/>}/>
-            <Route path="/guides/new-player-guides/quests-events" element={<QuestEventGuide/>}/>
-            <Route path="/guides/new-player-guides/basic-player-knowledge" element={<NewPlayerGuides/>}/>
+            <Route path="/guides/quests-events" element={<QuestEventGuide/>}/>
+            <Route path="/guides/new-player-guide" element={<NewPlayerGuides/>}/>
             <Route path="/guides/erenor-crafting-guide" element={<ErenorCraftinGuide/>}/>
             <Route path="/class-guides" element={<ClassGuides/>}/>
             <Route path="/event-timers" element={<EventTimers/>}/>
