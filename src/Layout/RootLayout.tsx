@@ -305,7 +305,8 @@ const RootLayout = () => {
                     <ModeToggle/>
                 </div>
             </div>
-            <Footer/></>
+            <Footer/>
+        </>
     );
 };
 
