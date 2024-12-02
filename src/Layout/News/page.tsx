@@ -53,7 +53,7 @@ export default function WebsiteNews() {
                             <div className="p-6">
                                 {/* Display image above the title */}
                                 <img
-                                    src={NEWS.image}  // Assuming the image URL is in NEWS.image
+                                     // src={NEWS.image}  // Assuming the image URL is in NEWS.image
                                     alt={NEWS.title}
                                     className="w-full h-48 object-cover rounded-t-lg mb-4"
                                 />
