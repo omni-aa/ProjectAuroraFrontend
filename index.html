@@ -1,15 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ArcheRage Guides & Wikis" />
-  <meta property="og:title" content="Project Aurora" />
-  <meta property="og:description" content="ArcheRage Guide & Wikis" />
-  <meta property="og:image" content="src/assets/projectaurroaimg.jpg" />
-  <title>Project Aurora</title>
+  <title>Vite + React + TS</title>
+  <style>
+    /* Basic styling for a more professional look */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    #root {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 800px;
+      text-align: center;
+    }
+    img {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="root"></div>
+
+<!-- Adding an image and description -->
+<div>
+  <img src="/src/assets/projectaurroaimg.jpg" alt="A collection of Project Aurora's ArcheRage guides and wikis" />
+  <p>Project Aurora: A comprehensive collection of ArcheRage guides and wikis to enhance your gameplay experience.</p>
+</div>
+
+<script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
