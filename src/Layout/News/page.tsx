@@ -54,7 +54,7 @@ export default function WebsiteNews() {
                 {/* No Results Message */}
                 {filteredNewsData.length === 0 && (
                     <p className="text-center text-gray-500 dark:text-gray-400 mt-8">
-                        No games found matching your criteria.
+                        No News Found!
                     </p>
                 )}
             </div>
