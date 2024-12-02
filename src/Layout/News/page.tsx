@@ -62,7 +62,7 @@ export default function WebsiteNews() {
                     >
                         <div className="max-w-xs">
                             <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                                Gippity AI powers the entire universe
+                                New Player Guides
                             </h2>
                             <p className="mt-4 text-left text-base/6 text-neutral-200">
                                 With over 100,000 monthly active bot users, Gippity AI is the most
@@ -81,7 +81,7 @@ export default function WebsiteNews() {
                     {/* Second WobbleCard */}
                     <WobbleCard containerClassName="col-span-1 min-h-[300px] p-6 bg-gray-800 rounded-lg">
                         <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                            No shirt, no shoes, no weapons.
+                            Event Timers
                         </h2>
                         <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
                             If someone yells “stop!”, goes limp, or taps out, the fight is over.
@@ -94,8 +94,7 @@ export default function WebsiteNews() {
                     >
                         <div className="max-w-sm">
                             <h2 className="max-w-sm md:max-w-lg text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                                Signup for blazing-fast cutting-edge state-of-the-art Gippity AI
-                                wrapper today!
+                              Crafting Guides
                             </h2>
                             <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
                                 With over 100,000 monthly active bot users, Gippity AI is the most
