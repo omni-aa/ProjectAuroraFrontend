@@ -9,6 +9,7 @@ import {
 } from "@tabler/icons-react";
 import {BentoGrid, BentoGridItem} from "@/components/ui/bento-grid.tsx";
 import {BackgroundBeamsWithCollision} from "@/components/ui/background-beams-with-collision.tsx";
+import WebsiteNews from "@/Layout/News/page.tsx";
 
 export function HomePage() {
     return (
@@ -17,7 +18,8 @@ export function HomePage() {
                 className="font-bold text-primary flex justify-center text-3xl sm:text-4xl py-4 sm:py-6 px-6 sm:px-8 my-4">
                 Welcome to Project Aurora
             </header>
-            <BentoGrid className="max-w-4xl mx-auto">
+            <WebsiteNews/>
+            <BentoGrid className="">
                 {items.map((item, i) => (
                     <BentoGridItem
                         key={i}
