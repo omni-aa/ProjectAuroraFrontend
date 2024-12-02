@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { NewsCard } from "@/components/Interface/interface.ts";
 import NewsDataCard from "@/components/newList.tsx";
-import { WobbleCard } from '@/components/ui/wobble-card';
+import {FeaturesSectionDemo} from "@/components/Features.tsx";
+ // Adjust the path as per your project structure
 
 export default function WebsiteNews() {
     const [news, setNews] = useState<NewsCard[]>([]);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const loadNewsData = async () => {
@@ -15,9 +16,16 @@ export default function WebsiteNews() {
 
         loadNewsData();
     }, []);
-
-    const filteredNewsData = news.filter(NEWS =>
+    const truncateDescription = (description: string, wordLimit: number) => {
+        const words = description.split(' ');
+        if (words.length > wordLimit) {
+            return words.slice(0, wordLimit).join(' ') + '...';
+        }
+        return description;
+    };
+    const filteredNewsData = news.filter((NEWS) =>
         NEWS.title.toLowerCase().includes(searchTerm.toLowerCase())
+
     );
 
     return (
@@ -35,6 +43,7 @@ export default function WebsiteNews() {
                 </div>
 
                 {/* News Cards */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                     {filteredNewsData.slice(0, 3).map((NEWS) => (
                         <div
@@ -42,74 +51,28 @@ export default function WebsiteNews() {
                             className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700"
                         >
                             <div className="p-6">
+                                {/* Display image above the title */}
+                                <img
+                                    src={NEWS.image}  // Assuming the image URL is in NEWS.image
+                                    alt={NEWS.title}
+                                    className="w-full h-48 object-cover rounded-t-lg mb-4"
+                                />
+
+                                {/* Title */}
                                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
                                     {NEWS.title}
                                 </h2>
+
+                                {/* Description (Truncated if necessary) */}
                                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
-                                    {NEWS.smallDescription}
+                                    {truncateDescription(NEWS.smallDescription, 30)} {/* Truncate after 30 words */}
                                 </p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* WobbleCards Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto w-full">
-                    {/* First WobbleCard */}
-                    <WobbleCard
-                        containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px] p-6"
-                        className="rounded-lg"
-                    >
-                        <div className="max-w-xs">
-                            <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                                New Player Guides
-                            </h2>
-                            <p className="mt-4 text-left text-base/6 text-neutral-200">
-                                With over 100,000 monthly active bot users, Gippity AI is the most
-                                popular AI platform for developers.
-                            </p>
-                        </div>
-                        <img
-                            src="/linear.webp"
-                            width={500}
-                            height={500}
-                            alt="linear demo image"
-                            className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
-                        />
-                    </WobbleCard>
 
-                    {/* Second WobbleCard */}
-                    <WobbleCard containerClassName="col-span-1 min-h-[300px] p-6 bg-gray-800 rounded-lg">
-                        <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                            Event Timers
-                        </h2>
-                        <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                            If someone yells “stop!”, goes limp, or taps out, the fight is over.
-                        </p>
-                    </WobbleCard>
-
-                    {/* Third WobbleCard */}
-                    <WobbleCard
-                        containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px] p-6 rounded-lg"
-                    >
-                        <div className="max-w-sm">
-                            <h2 className="max-w-sm md:max-w-lg text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                              Crafting Guides
-                            </h2>
-                            <p className="mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200">
-                                With over 100,000 monthly active bot users, Gippity AI is the most
-                                popular AI platform for developers.
-                            </p>
-                        </div>
-                        <img
-                            src="/linear.webp"
-                            width={500}
-                            height={500}
-                            alt="linear demo image"
-                            className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 object-contain rounded-2xl"
-                        />
-                    </WobbleCard>
-                </div>
 
                 {/* No Results Message */}
                 {filteredNewsData.length === 0 && (
@@ -117,8 +80,10 @@ export default function WebsiteNews() {
                         No News Found!
                     </p>
                 )}
+
+                {/* Features Section */}
+                <FeaturesSectionDemo/>
             </div>
         </div>
     );
-
 }
