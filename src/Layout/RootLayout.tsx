@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import {Link, NavLink, Outlet, ScrollRestoration} from 'react-router-dom';
 import * as RadixMenu from '@radix-ui/react-dropdown-menu';
 import { cn } from '@/lib/utils';
 import { ModeToggle } from '@/components/ui/mode-toggle';
@@ -303,9 +303,11 @@ const RootLayout = () => {
                 </main>
                 <div className="fixed bottom-4 right-4 z-50">
                     <ModeToggle/>
+
                 </div>
             </div>
             <Footer/>
+            <ScrollRestoration />
         </>
     );
 };

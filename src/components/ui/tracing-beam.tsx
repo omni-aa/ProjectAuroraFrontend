@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import {
     motion,
@@ -24,10 +23,18 @@ export const TracingBeam = ({
     const contentRef = useRef<HTMLDivElement>(null);
     const [svgHeight, setSvgHeight] = useState(0);
 
+    // Update the SVG height dynamically based on content and screen size
     useEffect(() => {
         if (contentRef.current) {
             setSvgHeight(contentRef.current.offsetHeight);
         }
+        const handleResize = () => {
+            if (contentRef.current) {
+                setSvgHeight(contentRef.current.offsetHeight);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     const y1 = useSpring(
@@ -75,14 +82,14 @@ export const TracingBeam = ({
                             borderColor:
                                 scrollYProgress.get() > 0 ? "white" : "var(--emerald-600)",
                         }}
-                        className="h-2 w-2  rounded-full border border-neutral-300 bg-white"
+                        className="h-2 w-2 rounded-full border border-neutral-300 bg-white"
                     />
                 </motion.div>
                 <svg
                     viewBox={`0 0 20 ${svgHeight}`}
                     width="20"
-                    height={svgHeight} // Set the SVG height
-                    className=" ml-4 block"
+                    height={svgHeight} // Set the dynamic SVG height
+                    className="ml-4 block"
                     aria-hidden="true"
                 >
                     <motion.path
