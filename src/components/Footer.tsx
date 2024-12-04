@@ -1,9 +1,10 @@
+
 import { Link } from 'react-router-dom';
 import { Mail, Github, Twitch, Twitter } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-gradient-to-r from-indigo-900 to-purple-900 text-gray-200 py-12">
+        <footer className="bg-gradient-to-r from-indigo-900 to-purple-900 text-gray-200 py-12 mt-auto">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Brand Section */}
@@ -14,26 +15,16 @@ const Footer = () => {
                             Your journey of exploration starts here.
                         </p>
                         <div className="flex space-x-4 mt-4">
-                            <a href="mailto:contact@auroraproject.com"
-                               className="text-gray-300 hover:text-white transition-colors">
+                            <a href="mailto:contact@auroraproject.com" className="text-gray-300 hover:text-white transition-colors">
                                 <Mail size={24} />
                             </a>
-                            <a href="https://github.com/auroraproject"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="text-gray-300 hover:text-white transition-colors">
+                            <a href="https://github.com/auroraproject" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                                 <Github size={24} />
                             </a>
-                            <a href="https://twitch.tv/auroraproject"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="text-gray-300 hover:text-white transition-colors">
+                            <a href="https://twitch.tv/auroraproject" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                                 <Twitch size={24} />
                             </a>
-                            <a href="https://twitter.com/auroraproject"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="text-gray-300 hover:text-white transition-colors">
+                            <a href="https://twitter.com/auroraproject" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
                                 <Twitter size={24} />
                             </a>
                         </div>
@@ -43,24 +34,12 @@ const Footer = () => {
                     <div>
                         <h3 className="text-xl font-semibold text-white mb-4">Quick Links</h3>
                         <div className="grid grid-cols-2 gap-2">
-                            <Link to="/" className="text-gray-300 hover:text-white transition-colors">
-                                Home
-                            </Link>
-                            <Link to="/event-timers" className="text-gray-300 hover:text-white transition-colors">
-                                Event Timers
-                            </Link>
-                            <Link to="/class-guides" className="text-gray-300 hover:text-white transition-colors">
-                                Class Guides
-                            </Link>
-                            <Link to="/info/about" className="text-gray-300 hover:text-white transition-colors">
-                                About Us
-                            </Link>
-                            <Link to="/contribute" className="text-gray-300 hover:text-white transition-colors">
-                                Contribute
-                            </Link>
-                            <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">
-                                Privacy
-                            </Link>
+                            <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
+                            <Link to="/event-timers" className="text-gray-300 hover:text-white transition-colors">Event Timers</Link>
+                            <Link to="/class-guides" className="text-gray-300 hover:text-white transition-colors">Class Guides</Link>
+                            <Link to="/info/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link>
+                            <Link to="/contribute" className="text-gray-300 hover:text-white transition-colors">Contribute</Link>
+                            <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">Privacy</Link>
                         </div>
                     </div>
 
