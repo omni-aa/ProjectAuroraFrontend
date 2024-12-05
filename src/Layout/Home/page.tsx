@@ -6,7 +6,7 @@ export function HomePage() {
     return (
         <>
             <div
-                className="h-[30rem] sm:h-[25rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md pb-8">
+                className="h-[20rem] sm:h-[15rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md pb-8">
                 <h1 className="md:text-6xl text-2xl lg:text-8xl font-bold text-center text-white relative z-20">
                     Project Aurora
                 </h1>

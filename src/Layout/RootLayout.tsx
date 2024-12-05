@@ -3,7 +3,8 @@ import {Link, NavLink, Outlet, ScrollRestoration} from 'react-router-dom';
 import * as RadixMenu from '@radix-ui/react-dropdown-menu';
 import { cn } from '@/lib/utils';
 import { ModeToggle } from '@/components/ui/mode-toggle';
-import Footer from "@/components/Footer.tsx"; // Dark Mode toggle component
+import Footer from "@/components/Footer.tsx";
+import {Book, BookOpen, Clock, Database, Home, Library} from "lucide-react";
 
 const RootLayout = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,38 +30,64 @@ const RootLayout = () => {
                         <nav className="hidden md:flex items-center space-x-6 ml-auto">
                             <NavLink
                                 to="/"
-                                className={({isActive}) => cn(
-                                    'text-foreground dark:text-foreground-dark hover:bg-primary dark:hover:bg-primary-dark px-6 py-3 rounded-lg transition-all',
-                                    isActive ? 'font-medium  dark:text-primary-dark' : 'font-normal'
-                                )}
+                                className={({ isActive }) =>
+                                    cn(
+                                        'flex items-center gap-2 text-foreground dark:text-foreground-dark hover:bg-primary dark:hover:bg-primary-dark px-6 py-3 rounded-lg transition-all',
+                                        isActive ? 'font-medium dark:text-primary-dark' : 'font-normal'
+                                    )
+                                }
                             >
-                                Home
+                                <Home className="inline-block" size={20} />
+                                <span>Home</span>
                             </NavLink>
+
 
                             <NavLink
                                 to="/event-timers"
-                                className={({isActive}) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                                className={({ isActive }) =>
+                                    cn(
+                                        'flex items-center gap-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all',
+                                        isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal'
+                                    )
+                                }
                             >
-                                Event Timers
+                                <Clock className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
+                                <span>Event Timers</span>
                             </NavLink>
+
                             <NavLink
                                 to="/class-guides"
-                                className={({isActive}) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                                className={({ isActive }) =>
+                                    cn(
+                                        'flex items-center gap-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all',
+                                        isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal'
+                                    )
+                                }
                             >
-                                Class Guides
+                                <Book className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
+                                <span>Class Guides</span>
                             </NavLink>
+
                             <NavLink
                                 to="/archerage-database"
-                                className={({isActive}) => cn('text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all', isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal')}
+                                className={({ isActive }) =>
+                                    cn(
+                                        'flex items-center gap-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all',
+                                        isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal'
+                                    )
+                                }
                             >
-                                ArcheRage Database
+                                <Database className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
+                                <span>ArcheRage Database</span>
                             </NavLink>
+
 
                             {/* Guides Dropdown */}
                             <RadixMenu.Root>
                                 <RadixMenu.Trigger
                                     className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
-                                    Guides
+                                    <BookOpen className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
+                                    <span>Class Guides</span>
                                 </RadixMenu.Trigger>
                                 <RadixMenu.Portal>
                                     <RadixMenu.Content
@@ -110,7 +137,8 @@ const RootLayout = () => {
                             <RadixMenu.Root>
                                 <RadixMenu.Trigger
                                     className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
-                                    Project Information
+                                    <Library className="inline-block" size={20} /> {}
+                                    <span>Project Information</span>
                                 </RadixMenu.Trigger>
                                 <RadixMenu.Portal>
                                     <RadixMenu.Content
