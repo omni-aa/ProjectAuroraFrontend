@@ -50,12 +50,12 @@ const dummyContent = [
 
         ),
         badge: "ArcheRage Guides",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/cJPRqRD/wp2481575.jpg",
     },
     {
         badge: 'Quest & Event Guides',
         title: "Quest & Event Guides",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/LJ0SxZw/wp2481540.jpg",
         description: (
             <>
                 <div>
@@ -70,7 +70,7 @@ const dummyContent = [
     {
         badge: "Hiram Gear Guide",
         title: "Hiram Gear Guide",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/V2rcB1Y/wp2481539.jpg",
         description: (
             <>
                 <div>
@@ -95,7 +95,7 @@ const dummyContent = [
     {
         badge:'Erenor Crafting Guide',
         title: "Erenor Crafting Guide",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/N135DmR/wp2481570.jpg",
         description: (
             <>
                 <div>
@@ -113,7 +113,7 @@ const dummyContent = [
     {
         badge:'Costume & Undergarments Guide',
         title: "Costume & Undergarments Guide",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/wBFSwsH/wp2481538.jpg",
         description: (
             <>
                 <div>
@@ -130,7 +130,7 @@ const dummyContent = [
     {
         badge:'Advanced Guides',
         title: "Advanced Guides",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/p01Fk6Q/wp2481589.jpg",
         description: (
             <>
                 <div>
@@ -147,7 +147,7 @@ const dummyContent = [
     {
         badge:'Achievement Collection Guides',
         title: "Achievement Collection Guides",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "https://i.ibb.co/3ybcwgz/wp2481581.jpg",
         description: (
             <>
                 <div>
