@@ -22,7 +22,7 @@ const RootLayout = () => {
                     <div className="container mx-auto px-4 flex items-center justify-between py-4">
                         {/* Brand/Logo */}
                         <Link to="/"
-                              className="text-2xl font-bold text-gray-800 dark:text-primary no-underline text-primary">
+                              className="text-4xl font-bold text-gray-800 dark:text-primary no-underline text-primary">
                             AuroraProject
                         </Link>
 
@@ -87,12 +87,18 @@ const RootLayout = () => {
                                 <RadixMenu.Trigger
                                     className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
                                     <BookOpen className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
-                                    <span>Class Guides</span>
+                                    <span>Guides</span>
                                 </RadixMenu.Trigger>
                                 <RadixMenu.Portal>
                                     <RadixMenu.Content
                                         className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto"
                                         sideOffset={8}>
+                                        <RadixMenu.Item asChild>
+                                            <Link to="/guides"
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Guides Main Page
+                                            </Link>
+                                        </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
                                             <Link to="/guides/new-player-guide"
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">

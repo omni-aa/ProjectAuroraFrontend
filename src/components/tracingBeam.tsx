@@ -1,6 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "@/components/ui/tracing-beam.tsx";
 import {BookOpen, Circle} from "lucide-react";
+import {NavLink} from "react-router-dom";
 
 export function Guidess() {
     return (
@@ -26,6 +27,12 @@ export function Guidess() {
                                     />
                                 )}
                                 {item.description}
+                                <button
+                                    className="px-6 py-2 bg-black text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+                                    <NavLink to={item.Link}>
+                                        Learn More
+                                    </NavLink>
+                                </button>
                             </div>
                         </div>
                     ))}
@@ -49,10 +56,12 @@ const dummyContent = [
             </>
 
         ),
-        badge: "ArcheRage Guides",
+        badge: "New Players",
         image: "https://i.ibb.co/cJPRqRD/wp2481575.jpg",
+        Link:'/guides/new-player-guide',
     },
     {
+        Link:'/',
         badge: 'Quest & Event Guides',
         title: "Quest & Event Guides",
         image: "https://i.ibb.co/LJ0SxZw/wp2481540.jpg",
@@ -68,6 +77,7 @@ const dummyContent = [
         )
     },
     {
+        Link:'/',
         badge: "Hiram Gear Guide",
         title: "Hiram Gear Guide",
         image: "https://i.ibb.co/V2rcB1Y/wp2481539.jpg",
@@ -93,6 +103,7 @@ const dummyContent = [
         )
     },
     {
+        Link:'/',
         badge:'Erenor Crafting Guide',
         title: "Erenor Crafting Guide",
         image: "https://i.ibb.co/N135DmR/wp2481570.jpg",
@@ -111,6 +122,7 @@ const dummyContent = [
         )
     },
     {
+        Link:'/',
         badge:'Costume & Undergarments Guide',
         title: "Costume & Undergarments Guide",
         image: "https://i.ibb.co/wBFSwsH/wp2481538.jpg",
@@ -128,6 +140,7 @@ const dummyContent = [
         )
     },
     {
+        Link:'/',
         badge:'Advanced Guides',
         title: "Advanced Guides",
         image: "https://i.ibb.co/p01Fk6Q/wp2481589.jpg",
@@ -145,6 +158,7 @@ const dummyContent = [
         )
     },
     {
+        Link:'/',
         badge:'Achievement Collection Guides',
         title: "Achievement Collection Guides",
         image: "https://i.ibb.co/3ybcwgz/wp2481581.jpg",

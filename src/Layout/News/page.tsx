@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { NewsCard } from "@/components/Interface/interface.ts";
 import NewsDataCard from "@/components/newList.tsx";
-import {FeaturesSectionDemo} from "@/components/Features.tsx";
  // Adjust the path as per your project structure
 
 export default function WebsiteNews() {
@@ -82,7 +81,6 @@ export default function WebsiteNews() {
                 )}
 
                 {/* Features Section */}
-                <FeaturesSectionDemo/>
             </div>
         </div>
     );

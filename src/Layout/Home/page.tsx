@@ -1,14 +1,15 @@
 import {BackgroundBeamsWithCollision} from "@/components/ui/background-beams-with-collision.tsx";
 import WebsiteNews from "@/Layout/News/page.tsx";
 import {SparklesCore} from "@/components/ui/sparkles.tsx";
+import {FeaturesSectionDemo} from "@/components/Features.tsx";
 
 export function HomePage() {
     return (
         <>
             <div
-                className="h-[20rem] sm:h-[15rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md pb-8">
+                className="h-[20rem] sm:h-[20rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md pb-8">
                 <h1 className="md:text-6xl text-2xl lg:text-8xl font-bold text-center text-white relative z-20">
-                    Project Aurora
+                    NEW & UPDATES
                 </h1>
                 <div className="w-full max-w-2xl h-32 sm:h-24 relative">
                     {/* Gradients */}
@@ -36,9 +37,8 @@ export function HomePage() {
                         className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(250px_150px_at_top,transparent_20%,white)]"></div>
                 </div>
             </div>
-
-
             <WebsiteNews/>
+            <FeaturesSectionDemo/>
             <BackgroundBeamsWithCollision className="py-3 px-5 my-4">
                 <h2 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight">
                     AuroraProject&apos;s Guides{" "}
