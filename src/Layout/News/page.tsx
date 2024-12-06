@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NewsCard } from "@/components/Interface/interface.ts";
 import NewsDataCard from "@/components/newList.tsx";
+import {urlFor} from "@/lib/sanity.ts";
  // Adjust the path as per your project structure
 
 export default function WebsiteNews() {
@@ -52,7 +53,7 @@ export default function WebsiteNews() {
                             <div className="p-6">
                                 {/* Display image above the title */}
                                 <img
-                                     // src={NEWS.image}  // Assuming the image URL is in NEWS.image
+                                    src={urlFor(NEWS.newsImage).url()}  // Assuming the image URL is in NEWS.image
                                     alt={NEWS.title}
                                     className="w-full h-48 object-cover rounded-t-lg mb-4"
                                 />

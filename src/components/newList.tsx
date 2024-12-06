@@ -7,6 +7,7 @@ async function getData(): Promise<NewsCard[]> {
     *[_type == 'newsData']{
         title,
         smallDescription,
+        newsImage
     }`;
 
     const data = await client.fetch(query);
