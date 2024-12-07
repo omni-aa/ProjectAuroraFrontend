@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerIntroduction/Interface.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/NewPlayerIntroduction/NewPlayerData.tsx";
+import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
+import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 
 export default function NewPlayerGuides() {

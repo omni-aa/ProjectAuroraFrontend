@@ -1,5 +1,5 @@
-import { client } from "@/lib/sanity.ts";
-import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerIntroduction/Interface.ts";
+import {client} from "@/lib/sanity.ts";
+import {GuideDataInterface} from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
 
 async function getData(): Promise<GuideDataInterface[]> {
     const query = `*[_type == 'NewPlayerGuide']{
@@ -9,15 +9,13 @@ async function getData(): Promise<GuideDataInterface[]> {
         Link
     }`;
 
-    const data = await client.fetch(query);
-    return data;
+    return await client.fetch(query);
 }
 
 
 export default async function GuidesData() {
     try {
-        const news = await getData();
-        return news;
+        return await getData();
     } catch (error) {
         console.error("Error fetching guide data:", error);
         return [];

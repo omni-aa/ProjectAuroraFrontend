@@ -130,7 +130,7 @@ const RootLayout = () => {
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/achievement-collection"
+                                            <Link to="/guides/achievements-collection-guide"
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Achievement Collection Guides
                                             </Link>
@@ -289,7 +289,7 @@ const RootLayout = () => {
                                             Costume & Undergarments Guide
                                         </NavLink>
                                         <NavLink
-                                            to="/guides/achievements-collection"
+                                            to="/guides/achievements-collection-guide"
                                             onClick={closeMenu} // Close the menu on click
                                             className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
                                         >

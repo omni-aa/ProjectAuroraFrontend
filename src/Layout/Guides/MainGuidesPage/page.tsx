@@ -1,9 +1,9 @@
 import { twMerge } from "tailwind-merge";
-import { TracingBeam } from "@/components/ui/tracing-beam";
+import { TracingBeam } from "@/components/ui/tracing-beam.tsx";
 import {ArrowRight, BookOpen, Circle} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-export function Guidess() {
+export function MainGuidesPage() {
     return (
         <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-700 dark:via-neutral-800 dark:to-neutral-900 min-h-screen py-16">
             <TracingBeam className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -185,4 +185,4 @@ const dummyContent = [
     },
 ];
 
-export default Guidess;
+export default MainGuidesPage;

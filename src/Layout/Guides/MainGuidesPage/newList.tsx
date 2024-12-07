@@ -1,5 +1,5 @@
 import {client} from "@/lib/sanity.ts";
-import {NewsCard} from "@/components/Interface/interface.ts";
+import {NewsCard} from "@/Layout/Guides/MainGuidesPage/Interface/interface.ts";
 
 
 async function getData(): Promise<NewsCard[]> {
@@ -10,14 +10,12 @@ async function getData(): Promise<NewsCard[]> {
         newsImage
     }`;
 
-    const data = await client.fetch(query);
-    return data;
+    return await client.fetch(query);
 }
 
 export default async function NewsDataCard() {
     try {
-        const news = await getData();
-        return news;
+        return await getData();
     } catch (error) {
         console.error("Error fetching game data:", error);
         return [];

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { NewsCard } from "@/components/Interface/interface.ts";
-import NewsDataCard from "@/components/newList.tsx";
+import { NewsCard } from "@/Layout/Guides/MainGuidesPage/Interface/interface.ts";
+import NewsDataCard from "@/Layout/Guides/MainGuidesPage/newList.tsx";
 import {urlFor} from "@/lib/sanity.ts";
  // Adjust the path as per your project structure
 
