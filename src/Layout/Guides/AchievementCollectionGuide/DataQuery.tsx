@@ -2,7 +2,7 @@ import {client} from "@/lib/sanity.ts";
 import {AchievementCollectionGuideInterface} from "@/Layout/Guides/AchievementCollectionGuide/Interface.ts";
 
 async function getData(): Promise<AchievementCollectionGuideInterface[]> {
-    const query = `*[_type == 'NewPlayerGuide']{
+    const query = `*[_type == 'AchievementCollectionGuides']{
         guideTitle,
         guideImage,
         guideData,
@@ -13,7 +13,7 @@ async function getData(): Promise<AchievementCollectionGuideInterface[]> {
 }
 
 
-export default async function GuidesData() {
+export default async function AchievementCollectionGuidesData() {
     try {
         return await getData();
     } catch (error) {

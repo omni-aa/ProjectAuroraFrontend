@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 import {AchievementCollectionGuideInterface} from "@/Layout/Guides/AchievementCollectionGuide/Interface.ts";
+import AchievementCollectionGuidesData from "@/Layout/Guides/AchievementCollectionGuide/DataQuery.tsx";
 
 export default function AchievementCollectionGuide() {
     const [guides, setGuides] = useState<AchievementCollectionGuideInterface[]>([]);
@@ -14,7 +14,7 @@ export default function AchievementCollectionGuide() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await AchievementCollectionGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

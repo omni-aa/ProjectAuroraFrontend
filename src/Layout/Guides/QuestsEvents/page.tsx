@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 import {QuestEventsInterface} from "@/Layout/Guides/QuestsEvents/QuestEventsInterface/Interface.ts";
+import QuestEventGuidesData from "@/Layout/Guides/QuestsEvents/DataQuery.tsx";
 
 export default function QuestEventGuide() {
     const [guides, setGuides] = useState<QuestEventsInterface[]>([]);
@@ -14,7 +14,7 @@ export default function QuestEventGuide() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await QuestEventGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

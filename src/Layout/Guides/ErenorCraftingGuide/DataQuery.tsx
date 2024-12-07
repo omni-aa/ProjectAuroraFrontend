@@ -2,7 +2,7 @@ import {client} from "@/lib/sanity.ts";
 import {ErenorGearGuideInterface} from "@/Layout/Guides/ErenorCraftingGuide/Interface.ts";
 
 async function getData(): Promise<ErenorGearGuideInterface[]> {
-    const query = `*[_type == 'NewPlayerGuide']{
+    const query = `*[_type == 'ErenorCraftingGuide']{
         guideTitle,
         guideImage,
         guideData,
@@ -13,7 +13,7 @@ async function getData(): Promise<ErenorGearGuideInterface[]> {
 }
 
 
-export default async function GuidesData() {
+export default async function ErenorCraftingGuidesData() {
     try {
         return await getData();
     } catch (error) {

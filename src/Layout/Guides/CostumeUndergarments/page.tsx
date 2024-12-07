@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 import {CostumeUnderGarmentsGuideInterface} from "@/Layout/Guides/CostumeUndergarments/Interface.ts";
+import CostumeUndergarmentsGuidesData from "@/Layout/Guides/CostumeUndergarments/DataQuery.tsx";
 
 export default function CostumeUndergarmentsGuide() {
     const [guides, setGuides] = useState<CostumeUnderGarmentsGuideInterface[]>([]);
@@ -14,7 +14,7 @@ export default function CostumeUndergarmentsGuide() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await CostumeUndergarmentsGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

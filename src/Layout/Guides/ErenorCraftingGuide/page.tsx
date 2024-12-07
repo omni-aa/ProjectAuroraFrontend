@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 import {ErenorGearGuideInterface} from "@/Layout/Guides/ErenorCraftingGuide/Interface.ts";
+import ErenorCraftingGuidesData from "@/Layout/Guides/ErenorCraftingGuide/DataQuery.tsx";
 
 export default function ErenorCraftingGuide() {
     const [guides, setGuides] = useState<ErenorGearGuideInterface[]>([]);
@@ -14,7 +14,7 @@ export default function ErenorCraftingGuide() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await ErenorCraftingGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

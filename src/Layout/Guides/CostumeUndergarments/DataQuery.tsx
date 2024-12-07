@@ -2,7 +2,7 @@ import {client} from "@/lib/sanity.ts";
 import {CostumeUnderGarmentsGuideInterface} from "@/Layout/Guides/CostumeUndergarments/Interface.ts";
 
 async function getData(): Promise<CostumeUnderGarmentsGuideInterface[]> {
-    const query = `*[_type == 'NewPlayerGuide']{
+    const query = `*[_type == 'CostumeUndergarmentsGuide']{
         guideTitle,
         guideImage,
         guideData,
@@ -13,7 +13,7 @@ async function getData(): Promise<CostumeUnderGarmentsGuideInterface[]> {
 }
 
 
-export default async function GuidesData() {
+export default async function CostumeUndergarmentsGuidesData() {
     try {
         return await getData();
     } catch (error) {

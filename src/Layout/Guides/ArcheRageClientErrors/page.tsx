@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 import {ArcheRageClientErrorInterface} from "@/Layout/Guides/ArcheRageClientErrors/Interface.ts";
+import ArcheRageClientErrorsGuidesData from "@/Layout/Guides/ArcheRageClientErrors/DataQuery.tsx";
 
 export default function ArcheRageClientErrors() {
     const [guides, setGuides] = useState<ArcheRageClientErrorInterface[]>([]);
@@ -14,7 +14,7 @@ export default function ArcheRageClientErrors() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await ArcheRageClientErrorsGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

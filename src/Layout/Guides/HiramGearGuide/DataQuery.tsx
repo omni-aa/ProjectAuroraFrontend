@@ -13,7 +13,7 @@ async function getData(): Promise<HiramGearGuideInterface[]> {
 }
 
 
-export default async function GuidesData() {
+export default async function HiramGuidesData() {
     try {
         return await getData();
     } catch (error) {

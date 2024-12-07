@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
+import HiramGuidesData from "@/Layout/Guides/HiramGearGuide/DataQuery.tsx";
 
 export default function HiramGearGuide() {
     const [guides, setGuides] = useState<GuideDataInterface[]>([]);
@@ -14,7 +14,7 @@ export default function HiramGearGuide() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await HiramGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

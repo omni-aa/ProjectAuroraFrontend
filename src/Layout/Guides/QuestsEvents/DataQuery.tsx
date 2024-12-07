@@ -14,7 +14,7 @@ async function getData(): Promise<QuestEventsInterface[]> {
 }
 
 
-export default async function GuidesData() {
+export default async function QuestEventGuidesData() {
     try {
         const news = await getData();
         return news;

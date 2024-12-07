@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
-import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
 import {ClassGuideInterface} from "@/Layout/Guides/ClassGuides/Interface.ts";
+import ClassGuidesData from "@/Layout/Guides/ClassGuides/DataQuery.tsx";
 
 export default function ClassGuides() {
     const [guides, setGuides] = useState<ClassGuideInterface[]>([]);
@@ -14,7 +14,7 @@ export default function ClassGuides() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await GuidesData();
+                const newData = await ClassGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);

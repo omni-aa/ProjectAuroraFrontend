@@ -2,7 +2,7 @@ import {client} from "@/lib/sanity.ts";
 import {ArcheRageClientErrorInterface} from "@/Layout/Guides/ArcheRageClientErrors/Interface.ts";
 
 async function getData(): Promise<ArcheRageClientErrorInterface[]> {
-    const query = `*[_type == 'NewPlayerGuide']{
+    const query = `*[_type == 'ArcheRageClientErrorsGuides']{
         guideTitle,
         guideImage,
         guideData,
@@ -13,7 +13,7 @@ async function getData(): Promise<ArcheRageClientErrorInterface[]> {
 }
 
 
-export default async function GuidesData() {
+export default async function ArcheRageClientErrorsGuidesData() {
     try {
         return await getData();
     } catch (error) {
