@@ -151,7 +151,7 @@ const RootLayout = () => {
                                         className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto"
                                         side="bottom" sideOffset={8}>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/about"
+                                            <Link to="/info/about-us"
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 About Us
                                             </Link>
@@ -169,13 +169,13 @@ const RootLayout = () => {
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/terms"
+                                            <Link to="/info/terms-of-service"
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Terms of Service
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/privacy"
+                                            <Link to="/info/privacy-policy"
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Privacy Policy
                                             </Link>

@@ -16,6 +16,10 @@ import CostumeUndergarmentsGuide from "@/Layout/Guides/CostumeUndergarments/page
 import ArcheRageClientErrors from "@/Layout/Guides/ArcheRageClientErrors/page.tsx";
 import ErenorCraftingGuide from "@/Layout/Guides/ErenorCraftingGuide/page.tsx";
 import AchievementCollectionGuide from "@/Layout/Guides/AchievementCollectionGuide/page.tsx";
+import {AboutUs} from "@/Layout/ProjectInformation/about-us/page.tsx";
+import {FAQ} from "@/Layout/ProjectInformation/faq/page.tsx";
+import {TermsOfService} from "@/Layout/ProjectInformation/terms-of-service/page.tsx";
+import {PrivacyPolicy} from "@/Layout/ProjectInformation/privacy-policy/page.tsx";
 
 
 
@@ -36,6 +40,10 @@ const router = createBrowserRouter(
             <Route path="/guides/costume-undergarments" element={<CostumeUndergarmentsGuide/>}/>
             <Route path="/guides/client-error-faq" element={<ArcheRageClientErrors/>}/>
             <Route path="/guides/achievements-collection-guide" element={<AchievementCollectionGuide/>}/>
+            <Route path='/info/about-us' element={<AboutUs/>}/>
+            <Route path='/info/faq' element={<FAQ/>}/>
+            <Route path='/info/terms-of-service' element={<TermsOfService/>}/>
+            <Route path='/info/privacy-policy' element={<PrivacyPolicy/>}/>
 
             <Route path='*' element={<Notfound/>}/>
         </Route>
