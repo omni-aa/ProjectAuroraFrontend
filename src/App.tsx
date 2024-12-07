@@ -6,7 +6,6 @@ import {HomePage} from "@/Layout/Home/page.tsx";
 import {ThemeProvider} from "@/Layout/ThemeProvider/theme-provider.tsx";
 import {Guides} from "@/Layout/Guides/page.tsx";
 import {QuestEventGuide} from "@/Layout/Guides/NewPlayerGuides/QuestsEvents/page.tsx";
-import {NewPlayerGuides} from "@/Layout/Guides/NewPlayerGuides/NewPlayerIntroduction/page.tsx";
 import {ErenorCraftinGuide} from "@/Layout/Guides/ErenorGearGuide/page.tsx";
 import {EventTimers} from "@/Layout/EventTimers/page.tsx";
 import {ClassGuides} from "@/Layout/Guides/ClassGuides/page.tsx";
@@ -15,6 +14,7 @@ import {HiramGearGuide} from "@/Layout/Guides/HiramGearGuide/page.tsx";
 import {CostumeUndergarmentsGuide} from "@/Layout/Guides/CostumeUndergarments/page.tsx";
 import {ArcheRageClientErrors} from "@/Layout/Guides/ArcheRageClientErrors/page.tsx";
 import RootLayout from "@/Layout/RootLayout.tsx";
+import NewPlayerGuides from "@/Layout/Guides/NewPlayerGuides/NewPlayerIntroduction/page.tsx";
 
 
 

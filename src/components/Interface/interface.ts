@@ -1,3 +1,4 @@
+import React from "react";
 
 export interface NewsCard {
     id: React.Key | null | undefined;
@@ -7,3 +8,4 @@ export interface NewsCard {
 
 
 }
+

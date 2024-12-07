@@ -4,7 +4,7 @@ import {NewsCard} from "@/components/Interface/interface.ts";
 
 async function getData(): Promise<NewsCard[]> {
     const query = `
-    *[_type == 'newsData']{
+    *[_type == 'newsData'][0...3]{
         title,
         smallDescription,
         newsImage

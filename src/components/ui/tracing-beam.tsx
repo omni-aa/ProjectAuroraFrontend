@@ -1,12 +1,6 @@
-
 import React, { useEffect, useRef, useState } from "react";
-import {
-    motion,
-    useTransform,
-    useScroll,
-    useSpring,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+import { motion, useTransform, useScroll, useSpring } from "framer-motion";
+import { cn } from "@/lib/utils"; // Assuming `cn` is a utility to merge classNames
 
 export const TracingBeam = ({
                                 children,
@@ -50,6 +44,7 @@ export const TracingBeam = ({
             ref={ref}
             className={cn("relative w-full max-w-4xl mx-auto h-full", className)}
         >
+            {/* SVG and motion-based animation */}
             <div className="absolute -left-4 md:-left-20 top-3">
                 <motion.div
                     transition={{
@@ -81,7 +76,7 @@ export const TracingBeam = ({
                 <svg
                     viewBox={`0 0 20 ${svgHeight}`}
                     width="20"
-                    height={svgHeight} // Set the SVG height
+                    height={svgHeight} // Set the SVG height dynamically
                     className=" ml-4 block"
                     aria-hidden="true"
                 >
@@ -110,8 +105,8 @@ export const TracingBeam = ({
                             gradientUnits="userSpaceOnUse"
                             x1="0"
                             x2="0"
-                            y1={y1} // set y1 for gradient
-                            y2={y2} // set y2 for gradient
+                            y1={y1} // Set y1 for gradient
+                            y2={y2} // Set y2 for gradient
                         >
                             <stop stopColor="#18CCFC" stopOpacity="0"></stop>
                             <stop stopColor="#18CCFC"></stop>
@@ -121,7 +116,11 @@ export const TracingBeam = ({
                     </defs>
                 </svg>
             </div>
-            <div ref={contentRef}>{children}</div>
+
+            {/* Prose Content */}
+            <div ref={contentRef} className="prose prose-sm dark:prose-invert px-5">
+                {children}
+            </div>
         </motion.div>
     );
 };
