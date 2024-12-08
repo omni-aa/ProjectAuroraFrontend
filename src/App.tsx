@@ -4,7 +4,6 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import {Notfound} from "@/Layout/404NotFound.tsx";
 import {HomePage} from "@/Layout/Home/page.tsx";
 import {ThemeProvider} from "@/Layout/ThemeProvider/theme-provider.tsx";
-import {EventTimers} from "@/Layout/EventTimers/page.tsx";
 import {ArcheRageDatabase} from "@/Layout/Guides/ArcheRageDatabase/page.tsx";
 import RootLayout from "@/Layout/RootLayout.tsx";
 import NewPlayerGuides from "@/Layout/Guides/NewPlayerGuides/page.tsx";
@@ -20,6 +19,7 @@ import {AboutUs} from "@/Layout/ProjectInformation/about-us/page.tsx";
 import {FAQ} from "@/Layout/ProjectInformation/faq/page.tsx";
 import {TermsOfService} from "@/Layout/ProjectInformation/terms-of-service/page.tsx";
 import {PrivacyPolicy} from "@/Layout/ProjectInformation/privacy-policy/page.tsx";
+import EventTimers from "@/Layout/EventTimers/page.tsx";
 
 
 
