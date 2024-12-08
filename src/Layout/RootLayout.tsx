@@ -4,7 +4,7 @@ import * as RadixMenu from '@radix-ui/react-dropdown-menu';
 import { cn } from '@/lib/utils';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import Footer from "@/components/Footer.tsx";
-import {Book, BookOpen, Clock, Database, Home, Library} from "lucide-react";
+import {BookOpen, Clock, Database, Home, Library} from "lucide-react";
 
 const RootLayout = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ const RootLayout = () => {
 
 
                             <NavLink
-                                to="/event-timers"
+                                to={"/event-timers"}
                                 className={({ isActive }) =>
                                     cn(
                                         'flex items-center gap-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all',
@@ -54,22 +54,60 @@ const RootLayout = () => {
                                 <Clock className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
                                 <span>Event Timers</span>
                             </NavLink>
+                            <RadixMenu.Root>
+                                <RadixMenu.Trigger
+                                    className="text-gray-800 dark:text-gray-300 font-normal hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all">
+                                    <BookOpen className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
+                                    <span>Class Guides</span>
+                                </RadixMenu.Trigger>
+                                <RadixMenu.Portal>
+                                    <RadixMenu.Content
+                                        className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto"
+                                        sideOffset={8}>
+                                        <RadixMenu.Item asChild>
+                                            <Link to={"/class-guides/melee"}
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Melee
+                                            </Link>
+                                        </RadixMenu.Item>
+                                        <RadixMenu.Item asChild>
+                                            <Link to={"/class-guides/healer"}
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Healer
+                                            </Link>
+                                        </RadixMenu.Item>
+                                        <RadixMenu.Item asChild>
+                                            <Link to={"/class-guides/mage"}
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Mage
+                                            </Link>
+                                        </RadixMenu.Item>
+                                        <RadixMenu.Item asChild>
+                                            <Link to={"/class-guides/gunner"}
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Gunner
+
+                                            </Link>
+                                        </RadixMenu.Item>
+                                        <RadixMenu.Item asChild>
+                                            <Link to={"/class-guides/archery"}
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Archery
+
+                                            </Link>
+                                        </RadixMenu.Item>
+                                        <RadixMenu.Item asChild>
+                                            <Link to={"/class-guides/Tank"}
+                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
+                                                Tank
+                                            </Link>
+                                        </RadixMenu.Item>
+                                    </RadixMenu.Content>
+                                </RadixMenu.Portal>
+                            </RadixMenu.Root>
 
                             <NavLink
-                                to="/class-guides"
-                                className={({ isActive }) =>
-                                    cn(
-                                        'flex items-center gap-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all',
-                                        isActive ? 'font-medium text-gray-900 dark:text-gray-100' : 'font-normal'
-                                    )
-                                }
-                            >
-                                <Book className="inline-block" size={20} /> {/* Replace with an appropriate icon */}
-                                <span>Class Guides</span>
-                            </NavLink>
-
-                            <NavLink
-                                to="/archerage-database"
+                                to={"/archerage-database"}
                                 className={({ isActive }) =>
                                     cn(
                                         'flex items-center gap-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all',
@@ -94,43 +132,43 @@ const RootLayout = () => {
                                         className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto"
                                         sideOffset={8}>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides"
+                                            <Link to={"/guides"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
                                                 Guides Main Page
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/new-player-guide"
+                                            <Link to={"/guides/new-player-guide"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 New Player Guide
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/quests-events"
+                                            <Link to={"/guides/quests-events"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Quest & Event Guides
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/hiram-gear-guide"
+                                            <Link to={"/guides/hiram-gear-guide"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Hiram Gear Guide
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/erenor-crafting-guide"
+                                            <Link to={"/guides/erenor-crafting-guide"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Erenor Crafting Guide
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/costume-undergarments"
+                                            <Link to={"/guides/costume-undergarments"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Costume & Undergarments Guide
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/guides/achievements-collection-guide"
+                                            <Link to={"/guides/achievements-collection-guide"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Achievement Collection Guides
                                             </Link>
@@ -151,31 +189,31 @@ const RootLayout = () => {
                                         className="bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 w-56 z-50 transition-transform max-h-96 overflow-y-auto"
                                         side="bottom" sideOffset={8}>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/about-us"
+                                            <Link to={"/info/about-us"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 About Us
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/contact"
+                                            <Link to={"/info/contact"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Contact Us
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/faq"
+                                            <Link to={"/info/faq"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 FAQ
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/terms-of-service"
+                                            <Link to={"/info/terms-of-service"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Terms of Service
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to="/info/privacy-policy"
+                                            <Link to={"/info/privacy-policy"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                                                 Privacy Policy
                                             </Link>
@@ -318,7 +356,7 @@ const RootLayout = () => {
                                             About Us
                                         </NavLink>
                                         <NavLink
-                                            to="/info/contact"
+                                            to={"/info/contact"}
                                             onClick={closeMenu} // Close the menu on click
                                             className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
                                         >

@@ -9,7 +9,7 @@ import RootLayout from "@/Layout/RootLayout.tsx";
 import NewPlayerGuides from "@/Layout/Guides/NewPlayerGuides/page.tsx";
 import QuestEventGuide from "@/Layout/Guides/QuestsEvents/page.tsx";
 import MainGuidesPage from "@/Layout/Guides/MainGuidesPage/page.tsx";
-import ClassGuides from "@/Layout/Guides/ClassGuides/page.tsx";
+import ClassGuides from "@/Layout/ClassGuides/page.tsx";
 import HiramGearGuide from "@/Layout/Guides/HiramGearGuide/page.tsx";
 import CostumeUndergarmentsGuide from "@/Layout/Guides/CostumeUndergarments/page.tsx";
 import ArcheRageClientErrors from "@/Layout/Guides/ArcheRageClientErrors/page.tsx";

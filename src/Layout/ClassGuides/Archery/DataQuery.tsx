@@ -1,8 +1,8 @@
 import {client} from "@/lib/sanity.ts";
-import {ClassGuideInterface} from "@/Layout/Guides/ClassGuides/Interface.ts";
+import {ClassGuideInterface} from "@/Layout/ClassGuides/Interface.ts";
 
 async function getData(): Promise<ClassGuideInterface[]> {
-    const query = `*[_type == 'ClassGuides']{
+    const query = `*[_type == 'ArcheryClassGuide']{
         guideTitle,
         guideImage,
         guideData,
@@ -13,7 +13,7 @@ async function getData(): Promise<ClassGuideInterface[]> {
 }
 
 
-export default async function ClassGuidesData() {
+export default async function ArcheryClassGuidesData() {
     try {
         return await getData();
     } catch (error) {
