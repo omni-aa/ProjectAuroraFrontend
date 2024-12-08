@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { PortableText } from '@portabletext/react';
-import {ClassGuideInterface} from "@/Layout/ClassGuides/Interface.ts";
 import HealerClassGuidesData from "@/Layout/ClassGuides/Healer/DataQuery.tsx";
+import {HealerClassGuideInterface} from "@/Layout/ClassGuides/Healer/Interface.ts";
 
-export default function ClassGuides() {
-    const [guides, setGuides] = useState<ClassGuideInterface[]>([]);
+export default function HealerClassGuides() {
+    const [guides, setGuides] = useState<HealerClassGuideInterface[]>([]);
 
     useEffect(() => {
         const loadData = async () => {

@@ -1,5 +1,5 @@
 
-export interface ClassGuideInterface {
+export interface TankClassGuideInterface {
     id?: string;
     guideTitle: string;
     guideImage?: never; // Sanity image reference

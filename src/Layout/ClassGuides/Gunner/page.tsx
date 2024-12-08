@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { PortableText } from '@portabletext/react';
-import {ClassGuideInterface} from "@/Layout/ClassGuides/Interface.ts";
 import GunnerClassGuidesData from "@/Layout/ClassGuides/Gunner/DataQuery.tsx";
+import {GunnerClassGuideInterface} from "@/Layout/ClassGuides/Gunner/Interface.ts";
 
-export default function ClassGuides() {
-    const [guides, setGuides] = useState<ClassGuideInterface[]>([]);
+export default function GunnerClassGuides() {
+    const [guides, setGuides] = useState<GunnerClassGuideInterface[]>([]);
 
     useEffect(() => {
         const loadData = async () => {

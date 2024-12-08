@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { PortableText } from '@portabletext/react';
-import {ClassGuideInterface} from "@/Layout/ClassGuides/Interface.ts";
 import ClassGuidesData from "@/Layout/ClassGuides/DataQuery.tsx";
+import {MiscClassGuideInterface} from "@/Layout/ClassGuides/Misc/Interface.ts";
 
 export default function ClassGuides() {
-    const [guides, setGuides] = useState<ClassGuideInterface[]>([]);
+    const [guides, setGuides] = useState<MiscClassGuideInterface[]>([]);
 
     useEffect(() => {
         const loadData = async () => {

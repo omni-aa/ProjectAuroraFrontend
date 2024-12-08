@@ -2,14 +2,13 @@ import { twMerge } from "tailwind-merge";
 import { BookOpen } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { urlFor } from "@/lib/sanity.ts";
 import { PortableText } from '@portabletext/react';
-import {ClassGuideInterface} from "@/Layout/ClassGuides/Interface.ts";
 import ArcheryClassGuidesData from "@/Layout/ClassGuides/Archery/DataQuery.tsx";
+import {ArcheryClassGuideInterface} from "@/Layout/ClassGuides/Archery/Interface.ts";
 
-export default function ClassGuides() {
-    const [guides, setGuides] = useState<ClassGuideInterface[]>([]);
+export default function ArcheryClassGuides() {
+    const [guides, setGuides] = useState<ArcheryClassGuideInterface[]>([]);
 
     useEffect(() => {
         const loadData = async () => {

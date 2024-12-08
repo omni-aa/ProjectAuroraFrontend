@@ -97,7 +97,7 @@ const RootLayout = () => {
                                             </Link>
                                         </RadixMenu.Item>
                                         <RadixMenu.Item asChild>
-                                            <Link to={"/class-guides/Tank"}
+                                            <Link to={"/class-guides/tank"}
                                                   className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors font-bold">
                                                 Tank
                                             </Link>

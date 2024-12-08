@@ -5,16 +5,16 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { PortableText } from '@portabletext/react';
-import {ClassGuideInterface} from "@/Layout/ClassGuides/Interface.ts";
-import ClassGuidesData from "@/Layout/ClassGuides/DataQuery.tsx";
+import {TankClassGuideInterface} from "@/Layout/ClassGuides/Tank/Interface.ts";
+import TankClassGuidesData from "@/Layout/ClassGuides/Tank/DataQuery.tsx";
 
-export default function ClassGuides() {
-    const [guides, setGuides] = useState<ClassGuideInterface[]>([]);
+export default function TankClassGuides() {
+    const [guides, setGuides] = useState<TankClassGuideInterface[]>([]);
 
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await ClassGuidesData();
+                const newData = await TankClassGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);
