@@ -1,29 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 
-interface EventCardProps {
+interface Event {
     title: string;
     nextTime: string;
     status: string;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ title, nextTime, status }) => {
+const EventCard: React.FC<Event> = ({ title, nextTime, status }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = () =>{
+        setIsOpen(!isOpen);
+    };
+
     return (
-        <div className="bg-gray-800 text-white p-4 rounded-md shadow-md">
-            <h3 className="text-lg font-bold mb-2">{title}</h3>
-            <p className="text-sm mb-2">Next time: {nextTime}</p>
+        <div className="bg-gray-800 text-white rounded-lg shadow-md mb-3">
+            <div className="flex justify-between items-center p-4">
+                <div className="flex-grow mr-4">
+                    <h3 className="text-sm font-bold truncate">{title}</h3>
+                    <p className="text-xs text-gray-300">{nextTime}</p>
+                </div>
+                <button
+                    className="text-white hover:bg-gray-700 p-2 rounded-full"
+                    onClick={toggleOpen}
+                    aria-label={isOpen ? 'Close event details' : 'Open event details'}
+                >
+                    {isOpen ? <ChevronUpIcon className="w-5 h-5" /> : <ChevronDownIcon className="w-5 h-5" />}
+                </button>
+            </div>
+
             <div
-                className={`inline-block px-2 py-1 rounded-full text-xs ${
+                className={`${
                     status === 'In Prog.' ? 'bg-yellow-500 text-gray-800' : 'bg-green-500 text-white'
-                }`}
+                } inline-block px-2 py-1 rounded-full text-xs ml-4 mb-2`}
             >
                 {status}
             </div>
+
+            {isOpen && (
+                <div className="p-4 bg-gray-700 rounded-b-lg">
+                    <div className="space-y-2">
+                        <p className="font-semibold text-sm">Event Details:</p>
+                        <div className="flex justify-between text-xs">
+                            <span className="opacity-80">Time:</span>
+                            <span className="text-right">{nextTime}</span>
+                        </div>
+                        <div className="flex justify-between text-xs">
+                            <span className="opacity-80">Current Status:</span>
+                            <span className="text-right">{status}</span>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
 const EventTimers: React.FC = () => {
-    const events = [
+    const events: Event[] = [
         { title: 'Lusca Awakening', nextTime: 'Dec 7, Sat, 9:00 PM', status: 'In Prog.' },
         { title: 'Oblivion Rift', nextTime: 'Dec 7, Sat, 6:40 PM', status: 'In Prog.' },
         { title: 'Clockwork Rebellion', nextTime: 'Dec 7, Sat, 6:40 PM', status: 'In Prog.' },
@@ -50,18 +85,62 @@ const EventTimers: React.FC = () => {
         { title: 'Boss Waking Nightmare', nextTime: 'Dec 8, Sun, 4:00 AM', status: 'In Prog.' },
     ];
 
+    // Robust date parsing function
+    const parseDate = (dateString: string): Date => {
+        const monthMap: {[key: string]: number} = {
+            'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+            'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+        };
+
+        // Split the date string
+        const parts = dateString.split(/,\s*/);
+
+        // Extract month, day, and time
+        const [month, day] = parts[0].split(' ');
+        const timeParts = parts[2].match(/(\d+):(\d+)\s*(AM|PM)?/);
+
+        if (!timeParts) {
+            // Fallback to current date if parsing fails
+            return new Date();
+        }
+
+        let hour = parseInt(timeParts[1]);
+        const minute = parseInt(timeParts[2]);
+        const period = timeParts[3];
+
+        // Adjust hour for AM/PM
+        if (period === 'PM' && hour !== 12) hour += 12;
+        if (period === 'AM' && hour === 12) hour = 0;
+
+        // Create date object
+        const date = new Date(2024, monthMap[month], parseInt(day));
+        date.setHours(hour, minute);
+
+        return date;
+    };
+
+    // Sort events by date
+    const sortedEvents = [...events].sort((a, b) =>
+        parseDate(a.nextTime).getTime() - parseDate(b.nextTime).getTime()
+    );
+
     return (
-        <div className="bg-gray-900 text-white h-screen flex flex-col items-center justify-center">
-            <h1 className="text-3xl font-bold mb-8">Event Schedules</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {events.map((event, index) => (
-                    <EventCard
-                        key={index}
-                        title={event.title}
-                        nextTime={event.nextTime}
-                        status={event.status}
-                    />
-                ))}
+        <div className="bg-gray-900 min-h-screen p-4">
+            <div className="container mx-auto">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 text-center">
+                    Upcoming Events
+                </h1>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {sortedEvents.map((event, index) => (
+                        <div key={index} className="w-full">
+                            <EventCard
+                                title={event.title}
+                                nextTime={event.nextTime}
+                                status={event.status}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

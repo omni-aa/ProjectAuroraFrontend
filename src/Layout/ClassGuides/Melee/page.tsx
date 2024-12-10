@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { PortableText } from '@portabletext/react';
-import ClassGuidesData from "@/Layout/ClassGuides/DataQuery.tsx";
 import {MeleeClassGuideInterface} from "@/Layout/ClassGuides/Melee/Interface.ts";
+import MeleeClassGuidesData from "@/Layout/ClassGuides/Melee/DataQuery.tsx";
 
 export default function MeleeClassGuides() {
     const [guides, setGuides] = useState<MeleeClassGuideInterface[]>([]);
@@ -14,7 +14,7 @@ export default function MeleeClassGuides() {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const newData = await ClassGuidesData();
+                const newData = await MeleeClassGuidesData();
                 setGuides(newData);
             } catch (error) {
                 console.error("Error loading guides:", error);
