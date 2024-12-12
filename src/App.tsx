@@ -18,14 +18,12 @@ import { AboutUs } from "@/Layout/ProjectInformation/about-us/page.tsx";
 import { FAQ } from "@/Layout/ProjectInformation/faq/page.tsx";
 import { TermsOfService } from "@/Layout/ProjectInformation/terms-of-service/page.tsx";
 import { PrivacyPolicy } from "@/Layout/ProjectInformation/privacy-policy/page.tsx";
-import EventTimers from "@/Layout/EventTimers/page.tsx";
 import MeleeClassGuides from "@/Layout/ClassGuides/Melee/page.tsx";
 import MageClassGuides from "@/Layout/ClassGuides/Mage/page.tsx";
 import HealerClassGuides from "@/Layout/ClassGuides/Healer/page.tsx";
 import GunnerClassGuides from "@/Layout/ClassGuides/Gunner/page.tsx";
 import ArcheryClassGuides from "@/Layout/ClassGuides/Archery/page.tsx";
 import TankClassGuides from "@/Layout/ClassGuides/Tank/page.tsx";
-import TimerPage from "@/data/adf/TestEventimers.tsx";
 import {ExpandableCardDemo} from "@/data/TestPage.tsx";
 import {TestComponent} from "@/data/TestEvents.tsx";
 
@@ -45,13 +43,11 @@ const router = createBrowserRouter(
             <Route path='/class-guides/gunner' element={<GunnerClassGuides />} />
             <Route path='/class-guides/archery' element={<ArcheryClassGuides />} />
             <Route path='/class-guides/tank' element={<TankClassGuides />} />
-            <Route path="/timers" element={<TimerPage />} />
             <Route path="/comp" element={<ExpandableCardDemo/>}/>
-            <Route path="/fuck" element={<TestComponent/>}/>
 
             {/* Parameterized route to show event card */}
 
-            <Route path="/event-timers" element={<EventTimers />} />
+            <Route path="/event-timers" element={<TestComponent />} />
             <Route path="/archerage-database" element={<ArcheRageDatabase />} />
             <Route path="/guides/hiram-gear-guide" element={<HiramGearGuide />} />
             <Route path="/guides/costume-undergarments" element={<CostumeUndergarmentsGuide />} />
