@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Red Dragon",
+    "schedule": {
+      "Monday": ["12:00:00", "18:00:00", "17:24:00"],
+      "Tuesday": ["14:30:00", "19:45:00"],
+      "Wednesday": ["11:15:00", "16:20:00", "20:30:00"],
+      "Thursday": ["00:05:00","00:06:00","00:07:00"],
+      "Friday": ["10:45:00", "15:20:00", "21:00:00"],
+      "Saturday": ["09:30:00", "13:15:00", "18:45:00"],
+      "Sunday": ["12:45:00", "16:30:00"]
+    },
+    "src": "https://i.ibb.co/hmrGjY8/achega.png",
+    "description": "Hello this is a Red Dragon description",
+    "content": "HELLO THIS IS CONTENT MATERIAL"
+  },
+  {
+    "name": "Luscas",
+    "schedule": {
+      "Monday": ["12:00:00", "18:00:00"],
+      "Tuesday": ["15:30:00", "20:15:00"],
+      "Friday": ["11:00:00", "16:45:00"]
+    },
+    "src": "https://i.ibb.co/hmrGjY8/achega.png",
+    "description": "Hello this is a Luscas description",
+    "content": "HELLO THIS IS CONTENT MATERIAL"
+  },
+  {
+    "name": "Crimson Rift",
+    "schedule": {
+      "Monday": ["10:00:00", "22:00:00"],
+      "Friday": ["13:30:00", "19:45:00"]
+    },
+    "src": "https://i.ibb.co/hmrGjY8/achega.png",
+    "description": "Hello this is a Crimson Rift description",
+    "content": "HELLO THIS IS CONTENT MATERIAL"
+  }
+]
