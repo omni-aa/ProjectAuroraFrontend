@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Clock, Calendar } from "lucide-react"; // Removed the 'X' import since it's not used
 import { client, urlFor } from "@/lib/sanity.ts";
 
+
 // Type definitions
 interface TimerConfig {
     src?: never;
@@ -11,48 +12,154 @@ interface TimerConfig {
     description: string;
     content: string;
     type: "rift" | "custom"; // Added type field for event categorization
+
 }
 
+// Define NextEvent type for the countdown
 interface NextEvent {
     formattedDate: string;
-    countdownParts: string[];
+    countdownParts: string[]; // You might want to adjust the type for the countdown if needed
 }
 
+// ModalProps to handle both event and nextEvent types
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
-    event: TimerConfig;
+    event: TimerConfig | null;  // Event is of type TimerConfig or null
+    nextEvent?: NextEvent | null;  // Make nextEvent optional
 }
 
-const Modal = ({ isOpen, onClose, event }: ModalProps) => {
-    if (!isOpen) return null;
+const Modal = ({ isOpen, onClose, event, nextEvent }: ModalProps) => {
+    const [countdown, setCountdown] = useState<string[]>(["00", "00", "00", "00"]); // Default countdown
+
+    // Function to get the schedule for a given day
+    const getScheduleForDay = (currentDay: string) => {
+        if (!event || !event.schedule) return []; // Return an empty array if event or schedule is null
+        const todaySchedule = event.schedule.find(({ day }) => day === currentDay);
+        return todaySchedule ? todaySchedule.times : [];
+    };
+
+    const currentDay = new Date().toLocaleString("en-US", { weekday: "long" }); // Get the current day (e.g., "Monday")
+    let currentDaySchedule = getScheduleForDay(currentDay);
+
+    // Check if all events for today are over
+    const isTodayScheduleOver = currentDaySchedule.every((time) => {
+        const [hours, minutes] = time.split(":");
+        const eventTime = new Date();
+        eventTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+        return eventTime.getTime() < Date.now(); // Check if the event time is in the past
+    });
+
+    // If today's events are over, get the schedule for the next day
+    if (isTodayScheduleOver || currentDaySchedule.length === 0) {
+        const nextDay = new Date();
+        nextDay.setDate(new Date().getDate() + 1); // Move to the next day
+        const nextDayName = nextDay.toLocaleString("en-US", { weekday: "long" });
+        currentDaySchedule = getScheduleForDay(nextDayName);
+    }
+
+    // Countdown logic
+    useEffect(() => {
+        if (nextEvent && nextEvent.formattedDate) {
+            const targetTime = new Date(nextEvent.formattedDate).getTime();
+            const interval = setInterval(() => {
+                const now = Date.now();
+                const remainingTime = targetTime - now;
+
+                if (remainingTime <= 0) {
+                    clearInterval(interval); // Stop the interval when the countdown reaches 0
+                    setCountdown(["00", "00", "00", "00"]);
+                } else {
+                    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                    setCountdown([
+                        String(days).padStart(2, "0"),
+                        String(hours).padStart(2, "0"),
+                        String(minutes).padStart(2, "0"),
+                        String(seconds).padStart(2, "00"),
+                    ]);
+                }
+            }, 1000);
+
+            return () => clearInterval(interval); // Clean up the interval on component unmount
+        }
+    }, [nextEvent]);
+
+    // If the modal is not open or event is null, return null (don't render the modal)
+    if (!isOpen || !event) return null;
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 backdrop-blur-sm">
-            <div
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl w-full max-w-lg sm:max-w-md lg:max-w-lg shadow-2xl transform transition-all duration-300 ease-in-out scale-100 hover:scale-105"
-            >
-                <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    {event.name}
-                </h2>
-                <p className="text-sm text-gray-700 dark:text-gray-300 mb-6">
-                    {event.description}
-                </p>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl w-full max-w-lg sm:max-w-md lg:max-w-lg shadow-2xl">
+                <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{event.name}</h2>
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-6">{event.description}</p>
+
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                    Schedule:
+                    Schedule ({new Date().toLocaleString("en-US", { weekday: "long" })}):
                 </h3>
                 <ul className="space-y-2">
-                    {event.schedule.map(({ day, times }, index) => (
-                        <li key={index} className="text-gray-900 dark:text-gray-100">
-                            <span className="font-semibold">{day}: </span>
-                            <span>{times.join(", ")}</span>
-                        </li>
-                    ))}
+                    {currentDaySchedule.length > 0 ? (
+                        currentDaySchedule.map((time, idx) => {
+                            const [hours, minutes] = time.split(":");
+                            const date = new Date();
+                            date.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+
+                            return (
+                                <li key={idx} className="text-sm text-gray-600 dark:text-gray-300">
+                                    {date.toLocaleString("en-US", {
+                                        weekday: "short",
+                                        month: "short",
+                                        day: "numeric",
+                                        hour: "numeric",
+                                        minute: "2-digit",
+                                        hour12: true,
+                                    })}
+                                </li>
+                            );
+                        })
+                    ) : (
+                        <p className="text-sm text-gray-500">No schedule for today. Showing next day's schedule:</p>
+                    )}
                 </ul>
+
+                {/* Formatted Date Section */}
+                {nextEvent && nextEvent.formattedDate && (
+                    <div className="mt-6">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Next Event:</h3>
+                        <div className="text-yellow-300 text-xl">{nextEvent.formattedDate}</div>
+                    </div>
+                )}
+
+                {/* Countdown Section */}
+                {nextEvent && (
+                    <div className="mt-6">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Countdown:</h3>
+                        <div className="flex gap-2">
+                            {countdown.map((part, index) => {
+                                const labels = ["D", "H", "M", "S"];
+                                return (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 rounded-lg p-2 text-center min-w-[50px]"
+                                    >
+                                        <div className="text-xl font-bold text-yellow-400">
+                                            {part}
+                                        </div>
+                                        <div className="text-xs text-gray-500">{labels[index]}</div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+
                 <div className="mt-6 flex justify-end">
                     <button
                         onClick={onClose}
-                        className="px-6 py-2 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition-all duration-200 ease-in-out transform hover:scale-105 focus:outline-none dark:bg-blue-500 dark:hover:bg-blue-600"
+                        className="px-6 py-2 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition-all duration-200 ease-in-out"
                     >
                         Close
                     </button>
@@ -61,6 +168,8 @@ const Modal = ({ isOpen, onClose, event }: ModalProps) => {
         </div>
     );
 };
+
+
 
 
 export function TestComponentScheme() {
@@ -269,13 +378,14 @@ export function TestComponentScheme() {
                         })}
                     </div>
                 )}
-                {riftEvents.length > 0 && (
+
+                {customEvents.length > 0 && (
                     <section className="mt-12">
                         <h3 className={`text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-600 mb-6 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
-                            Rifts
+                            Custom Events
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                            {riftEvents.map((timer) => {
+                            {customEvents.map((timer) => {
                                 const nextEvent = nextEvents[timer.name];
                                 return (
                                     <motion.div
@@ -326,14 +436,13 @@ export function TestComponentScheme() {
                     </section>
                 )}
 
-
-                {customEvents.length > 0 && (
+                {riftEvents.length > 0 && (
                     <section className="mt-12">
                         <h3 className={`text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-600 mb-6 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
                             Custom Events
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                            {customEvents.map((timer) => {
+                            {riftEvents.map((timer) => {
                                 const nextEvent = nextEvents[timer.name];
                                 return (
                                     <motion.div
