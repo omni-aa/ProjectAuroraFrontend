@@ -42,16 +42,18 @@ const Modal = ({ isOpen, onClose, event, nextEvent }: ModalProps) => {
     const currentDay = new Date().toLocaleString("en-US", { weekday: "long" }); // Get the current day (e.g., "Monday")
     let currentDaySchedule = getScheduleForDay(currentDay);
 
-    // Check if all events for today are over
-    const isTodayScheduleOver = currentDaySchedule.every((time) => {
-        const [hours, minutes] = time.split(":");
-        const eventTime = new Date();
-        eventTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
-        return eventTime.getTime() < Date.now(); // Check if the event time is in the past
-    });
+    // Function to check if all events for today have passed
+    const areAllEventsFinished = (schedule: string[]) => {
+        return schedule.every((time) => {
+            const [hours, minutes] = time.split(":");
+            const eventTime = new Date();
+            eventTime.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+            return eventTime.getTime() < Date.now(); // Check if the event time is in the past
+        });
+    };
 
-    // If today's events are over, get the schedule for the next day
-    if (isTodayScheduleOver || currentDaySchedule.length === 0) {
+    // If today's events are over, get the next day's schedule
+    if (areAllEventsFinished(currentDaySchedule)) {
         const nextDay = new Date();
         nextDay.setDate(new Date().getDate() + 1); // Move to the next day
         const nextDayName = nextDay.toLocaleString("en-US", { weekday: "long" });
