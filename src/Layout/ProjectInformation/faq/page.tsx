@@ -31,15 +31,15 @@ export const FAQ = () => {
 
 const faqItems = [
     {
-        question: "What is your refund policy?",
-        answer: "We offer a 30-day money-back guarantee for all purchases. If you're not satisfied, contact our support team for a full refund.",
+        question: "What is this website?",
+        answer: "Unofficial ArcheRage Website that provides Accurate an informative data for all players.",
     },
     {
-        question: "How can I contact customer support?",
-        answer: "You can reach our customer support team via email at support@example.com or through our contact form on the website.",
+        question: "What we provide",
+        answer: "Custom Guides, Event Timers, KR Patch Note Translations",
     },
     {
-        question: "Do you offer bulk discounts?",
-        answer: "Yes, we offer discounts for bulk purchases. Please get in touch with our sales team for more information.",
+        question: "Request a Guide",
+        answer: "to request a guide join our discord server",
     },
 ];

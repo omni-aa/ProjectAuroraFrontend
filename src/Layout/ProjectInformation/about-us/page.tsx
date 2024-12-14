@@ -8,7 +8,7 @@ export const AboutUs = () => {
                     About Us
                 </h1>
                 <p className="mt-4 text-lg md:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
-                    Discover our story, mission, and the values that drive us forward.
+                    Craft.Claim.Conquer ArcheRage Guides & Wikis
                 </p>
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="w-96 h-96 bg-primary/10 rounded-full blur-3xl absolute -top-12 -left-24"></div>
@@ -23,9 +23,15 @@ export const AboutUs = () => {
                         Our Mission
                     </h2>
                     <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        We are dedicated to delivering impactful solutions that empower businesses and individuals.
-                        By blending innovation with a customer-centric approach, we strive to create experiences that
-                        matter and foster growth for all our stakeholders.
+                       Providing players with the necessary{" "}
+                        <span className="font-bold text-neutral-600 dark:text-neutral-300">
+                             Guides, & Support for ArcheRage {" "}
+                        </span>
+                        detailed <span className="font-bold text-neutral-600 dark:text-neutral-300">
+                        KR Patch Note Translations</span>
+                        <br/>
+                        and more
+
                     </p>
                 </div>
                 <div>
@@ -33,9 +39,11 @@ export const AboutUs = () => {
                         Our Vision
                     </h2>
                     <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                        We envision a world where technology simplifies lives, connects communities, and drives
-                        sustainable progress. Our relentless pursuit of excellence ensures that we remain ahead,
-                        inspiring change and making a difference globally.
+                        Knowledge is key to success in any MMORPG, and ArcheRage is no exception.
+                        Finding reliable guides and support should be straightforward, without the frustration of false
+                        or outdated information disrupting your gameplay.
+                        That’s why we offer accurate, up-to-date guides, crafted by our team of experienced veteran players,
+                        to help you navigate every aspect of the game with confidence.
                     </p>
                 </div>
             </section>
@@ -52,9 +60,7 @@ export const AboutUs = () => {
                                 key={value.title}
                                 className="p-6 bg-white dark:bg-neutral-700 rounded-lg shadow-lg"
                             >
-                                <div className="w-14 h-14 mx-auto flex items-center justify-center bg-primary/10 text-primary dark:bg-primary/20 rounded-full mb-4">
-                                    {value.icon}
-                                </div>
+
                                 <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">
                                     {value.title}
                                 </h3>
@@ -102,18 +108,18 @@ export const AboutUs = () => {
 // Core Values Data
 const coreValues = [
     {
-        title: "Innovation",
-        description: "Constantly pushing boundaries to create forward-thinking solutions.",
+        title: "Accuracy",
+        description: "Delivering precise and up-to-date information to empower players with the knowledge they need to succeed.",
         icon: <i className="fas fa-lightbulb text-2xl"></i>,
     },
     {
-        title: "Integrity",
-        description: "We operate with transparency, trust, and respect.",
+        title: "Community",
+        description: " Fostering a supportive and inclusive environment where players can grow and thrive together.",
         icon: <i className="fas fa-handshake text-2xl"></i>,
     },
     {
-        title: "Excellence",
-        description: "Committed to delivering outstanding results in every endeavor.",
+        title: "Expertise",
+        description: " Leveraging the experience of veteran players to create guides and resources that truly enhance the gaming experience.",
         icon: <i className="fas fa-star text-2xl"></i>,
     },
 ];
@@ -121,18 +127,14 @@ const coreValues = [
 // Team Members Data
 const teamMembers = [
     {
-        name: "Alice Johnson",
-        role: "CEO & Founder",
-        image: "https://i.pravatar.cc/150?img=1",
+        name: "Trashdarkrunner",
+        role: "Lead Developer",
+        image: "https://i.ibb.co/dQZv4rH/image.png",
     },
     {
-        name: "Bob Smith",
-        role: "CTO",
+        name: "Reaze",
+        role: "Developer",
         image: "https://i.pravatar.cc/150?img=2",
     },
-    {
-        name: "Charlie Brown",
-        role: "Marketing Lead",
-        image: "https://i.pravatar.cc/150?img=3",
-    },
+
 ];

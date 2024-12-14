@@ -206,18 +206,6 @@ const RootLayout = () => {
                                                 FAQ
                                             </Link>
                                         </RadixMenu.Item>
-                                        <RadixMenu.Item asChild>
-                                            <Link to={"/info/terms-of-service"}
-                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                                Terms of Service
-                                            </Link>
-                                        </RadixMenu.Item>
-                                        <RadixMenu.Item asChild>
-                                            <Link to={"/info/privacy-policy"}
-                                                  className="block px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                                                Privacy Policy
-                                            </Link>
-                                        </RadixMenu.Item>
                                     </RadixMenu.Content>
                                 </RadixMenu.Portal>
                             </RadixMenu.Root>
