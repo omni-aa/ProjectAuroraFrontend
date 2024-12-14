@@ -24,8 +24,7 @@ import HealerClassGuides from "@/Layout/ClassGuides/Healer/page.tsx";
 import GunnerClassGuides from "@/Layout/ClassGuides/Gunner/page.tsx";
 import ArcheryClassGuides from "@/Layout/ClassGuides/Archery/page.tsx";
 import TankClassGuides from "@/Layout/ClassGuides/Tank/page.tsx";
-import {ExpandableCardDemo} from "@/data/TestPage.tsx";
-import {TestComponent} from "@/data/TestEvents.tsx";
+import {TestComponentScheme} from "@/Layout/EventTimers/page.tsx";
 
 
 const router = createBrowserRouter(
@@ -43,11 +42,8 @@ const router = createBrowserRouter(
             <Route path='/class-guides/gunner' element={<GunnerClassGuides />} />
             <Route path='/class-guides/archery' element={<ArcheryClassGuides />} />
             <Route path='/class-guides/tank' element={<TankClassGuides />} />
-            <Route path="/comp" element={<ExpandableCardDemo/>}/>
 
-            {/* Parameterized route to show event card */}
-
-            <Route path="/event-timers" element={<TestComponent />} />
+            <Route path="/event-timers" element={<TestComponentScheme />} />
             <Route path="/archerage-database" element={<ArcheRageDatabase />} />
             <Route path="/guides/hiram-gear-guide" element={<HiramGearGuide />} />
             <Route path="/guides/costume-undergarments" element={<CostumeUndergarmentsGuide />} />
