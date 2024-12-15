@@ -134,7 +134,7 @@ const teamMembers = [
     {
         name: "Reaze",
         role: "Developer",
-        image: "https://i.pravatar.cc/150?img=2",
+        image: "https://i.ibb.co/k4m4ppy/pp.jpg",
     },
 
 ];
