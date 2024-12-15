@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
-import { BookOpen, ArrowRight } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { BookOpen } from "lucide-react";
+
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
@@ -77,26 +77,7 @@ export default function HiramGearGuide() {
                                         <PortableText value={guide.guideData}/>
                                     </div>
 
-                                    <div className="mt-8 flex justify-start">
-                                        <NavLink
-                                            to={guide.Link}
-                                            className="group/link inline-flex items-center px-8 py-3
-                                            bg-blue-700 hover:bg-blue-800
-                                            dark:bg-blue-600 dark:hover:bg-blue-700
-                                            text-white rounded-lg font-bold text-lg
-                                            transform transition duration-300
-                                            hover:-translate-y-0.5
-                                            shadow-md hover:shadow-lg
-                                            dark:shadow-sm dark:hover:shadow-md
-                                            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                                        >
-                                            Learn More
-                                            <ArrowRight
-                                                className="ml-2 transition-transform group-hover/link:translate-x-1"
-                                                size={24}
-                                            />
-                                        </NavLink>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,5 @@
 import { twMerge } from "tailwind-merge";
 import { BookOpen } from "lucide-react";
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
@@ -52,15 +51,6 @@ export default function QuestEventGuide() {
                                     <PortableText value={guide.guideData}/>
                                 </div>
 
-                                {/* Learn More Button */}
-                                <div className="mt-6 flex justify-start">
-                                    <NavLink
-                                        to={guide.Link}
-                                        className="px-6 py-3 bg-black text-white rounded-lg font-bold text-lg transform hover:-translate-y-1 transition duration-300 hover:bg-gray-800"
-                                    >
-                                        Learn More
-                                    </NavLink>
-                                </div>
                             </div>
                         </div>
                     ))}

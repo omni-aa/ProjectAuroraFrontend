@@ -3,7 +3,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { Notfound } from "@/Layout/404NotFound.tsx";
 import { HomePage } from "@/Layout/Home/page.tsx";
 import { ThemeProvider } from "@/Layout/ThemeProvider/theme-provider.tsx";
-import { ArcheRageDatabase } from "@/Layout/Guides/ArcheRageDatabase/page.tsx";
+import { ArcheRageDatabase } from "@/Layout/ArcheRageDatabase/page.tsx";
 import RootLayout from "@/Layout/RootLayout.tsx";
 import NewPlayerGuides from "@/Layout/Guides/NewPlayerGuides/page.tsx";
 import QuestEventGuide from "@/Layout/Guides/QuestsEvents/page.tsx";
