@@ -1,12 +1,21 @@
 import { twMerge } from "tailwind-merge";
 import { BookOpen } from "lucide-react";
-
 import { useState, useEffect } from "react";
 
 import { urlFor } from "@/lib/sanity.ts";
 import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
 import { PortableText } from '@portabletext/react';
 import HiramGuidesData from "@/Layout/Guides/HiramGearGuide/DataQuery.tsx";
+
+// Define a more specific type for the image
+interface SanityImageType {
+    _type: 'image';
+    asset: {
+        _ref: string;
+        _type: 'reference';
+    };
+    alt?: string;
+}
 
 export default function HiramGearGuide() {
     const [guides, setGuides] = useState<GuideDataInterface[]>([]);
@@ -23,6 +32,30 @@ export default function HiramGearGuide() {
 
         loadData();
     }, []);
+
+    // Typed custom component for rendering images
+    const CustomImageComponent = ({ value }: { value: SanityImageType }) => {
+        if (!value?.asset) return null;
+
+        return (
+            <img
+                src={urlFor(value).url()}
+                alt={value.alt || 'Guide Image'}
+                className="rounded-xl my-6 w-full object-cover max-h-[600px]
+                shadow-md hover:shadow-xl
+                dark:shadow-sm dark:hover:shadow-md
+                brightness-95 hover:brightness-100
+                dark:brightness-90 dark:hover:brightness-100"
+            />
+        );
+    };
+
+    // Define custom components for PortableText with proper typing
+    const components = {
+        types: {
+            image: CustomImageComponent
+        }
+    };
 
     return (
         <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -74,10 +107,11 @@ export default function HiramGearGuide() {
                                     dark:prose-a:text-blue-300
                                     max-w-none
                                     text-gray-800 dark:text-gray-200">
-                                        <PortableText value={guide.guideData}/>
+                                        <PortableText
+                                            value={guide.guideData}
+                                            components={components}
+                                        />
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>

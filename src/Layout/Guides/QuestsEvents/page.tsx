@@ -50,7 +50,6 @@ export default function QuestEventGuide() {
                                 <div className="mt-12 prose prose-blue prose-lg dark:prose-invert prose-a:text-primary max-w-none">
                                     <PortableText value={guide.guideData}/>
                                 </div>
-
                             </div>
                         </div>
                     ))}
