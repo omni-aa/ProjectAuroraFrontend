@@ -280,6 +280,13 @@ const RootLayout = () => {
                                 {isGuidesOpen && (
                                     <div className="ml-6 mt-2 space-y-2">
                                         <NavLink
+                                            to="/guides"
+                                            onClick={closeMenu} // Close the menu on click
+                                            className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                        >
+                                            Guides Main Page
+                                        </NavLink>
+                                        <NavLink
                                             to="/guides/new-player-guide"
                                             onClick={closeMenu} // Close the menu on click
                                             className="block px-6 py-2 text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
