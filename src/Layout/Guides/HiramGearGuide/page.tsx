@@ -2,11 +2,11 @@ import { twMerge } from "tailwind-merge";
 import { BookOpen } from "lucide-react";
 import { useState, useEffect } from "react";
 
-import {urlFor,urlForImage} from "@/lib/sanity.ts";
+import {urlFor} from "@/lib/sanity.ts";
 import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
 import { PortableText } from '@portabletext/react';
 import HiramGuidesData from "@/Layout/Guides/HiramGearGuide/DataQuery.tsx";
-import {SanityImageType} from "@/Layout/Guides/HiramGearGuide/Interface.ts";
+import CustomImageComponent from "@/components/CustomImageComponent.tsx";
 
 // Define a more specific type for the image
 
@@ -27,22 +27,6 @@ export default function HiramGearGuide() {
         loadData();
     }, []);
 
-    // Typed custom component for rendering images
-    const CustomImageComponent = ({ value }: { value: SanityImageType }) => {
-        if (!value?.asset) return null;
-
-        return (
-            <img
-                src={urlForImage(value).url()}
-                alt={value.alt || 'Guide Image'}
-                className="rounded-xl my-6 w-full object-cover max-h-[600px]
-                shadow-md hover:shadow-xl
-                dark:shadow-sm dark:hover:shadow-md
-                brightness-95 hover:brightness-100
-                dark:brightness-90 dark:hover:brightness-100"
-            />
-        );
-    };
 
     // Define custom components for PortableText with proper typing
     const components = {

@@ -6,6 +6,7 @@ import { urlFor } from "@/lib/sanity.ts";
 import { GuideDataInterface } from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
 import GuidesData from "@/Layout/Guides/NewPlayerGuides/DataQuery.tsx";
 import { PortableText } from '@portabletext/react';
+import CustomImageComponent from "@/components/CustomImageComponent.tsx";
 
 export default function NewPlayerGuides() {
     const [guides, setGuides] = useState<GuideDataInterface[]>([]);
@@ -22,6 +23,12 @@ export default function NewPlayerGuides() {
 
         loadData();
     }, []);
+
+    const components = {
+        types: {
+            image: CustomImageComponent
+        }
+    };
 
     return (
         <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -73,9 +80,11 @@ export default function NewPlayerGuides() {
                                     dark:prose-a:text-blue-300
                                     max-w-none
                                     text-gray-800 dark:text-gray-200">
-                                        <PortableText value={guide.guideData}/>
+                                        <PortableText
+                                            value={guide.guideData}
+                                            components={components}
+                                        />
                                     </div>
-
                                 </div>
                             </div>
                         </div>

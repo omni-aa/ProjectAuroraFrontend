@@ -2,12 +2,12 @@ import {client} from "@/lib/sanity.ts";
 import {GuideDataInterface} from "@/Layout/Guides/NewPlayerGuides/NewPlayerInterface/Interface.ts";
 
 async function getData(): Promise<GuideDataInterface[]> {
-    const query = `*[_type == 'NewPlayerGuide']{
-        guideTitle,
-        guideImage,
-        guideData,
-        Link
-    }`;
+    const query = `*[_type == 'NewPlayerGuide'] | order(_createdAt asc){
+    guideTitle,
+    guideImage,
+    guideData,
+    Link
+}`;
 
     return await client.fetch(query);
 }
